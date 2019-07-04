@@ -1,0 +1,43 @@
+{
+  "name": "@toryjs/components-react-router",
+  "version": "1.0.0",
+  "description": "Semantic UI form renderer based on dynamic form generation",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "module": "dist/mjs/index.js",
+  "scripts": {
+    "test": "mocha --require ./mocha.config.js src/**/*.test.*",
+    "test-watch": "mocha --require ./mocha.config.js src/**/*.test --watch",
+    "luis1": "node fuse.js",
+    "luis": "luis",
+    "build": "tsc -p tsconfig.dev.json && tsc -p tsconfig.prod.json",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Semantic",
+    "UI",
+    "Form",
+    "React"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@toryjs/express-api": "1.0.0",
+    "fuse-box": "^3.7.1"
+  },
+  "dependencies": {
+    "@toryjs/ui": "^1.0.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "use-react-router": "^1.0.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

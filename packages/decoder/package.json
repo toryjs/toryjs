@@ -1,0 +1,32 @@
+{
+  "name": "@toryjs/decoder",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Decoder for website configuration passed from server",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "tsc && tsc --module es6 --outDir ./dist/mjs --declaration false --sourceMap false",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toryjs/decoder.git"
+  },
+  "keywords": [
+    "React",
+    "UX"
+  ],
+  "author": "Tomi Trescak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toryjs/decoder/issues"
+  },
+  "homepage": "https://github.com/toryjs/decoder#readme",
+  "dependencies": {
+    "@toryjs/decoder": "^1.0.0",
+    "@types/lz-string": "^1.3.33",
+    "lz-string": "^1.4.4"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "compileOnSave": false,
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist/cjs",
+    "sourceMap": false,
+    "inlineSourceMap": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2016"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitHelpers": false,
+    "outDir": "./dist/mjs",
+    "declaration": false,
+    "preserveConstEnums": true,
+    "pretty": true,
+    "removeComments": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "target": "es6",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+    // "sourceRoot": "/Users/tomi/Github/apps/interfaces/dynamic-form-semantic-ui/src/"
+    // "plugins": [
+    //   {
+    //     "name": "typescript-styled-plugin",
+    //     "lint": {
+    //       "validProperties": "label"
+    //     }
+    //   }
+    // ]
+  },
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,16 @@
+import React from 'react';
+
+import { ToryEditableForm } from '@toryjs/ui';
+
+const Editor = React.lazy(() => import('./editor'));
+const Form = React.lazy(() => import('./form'));
+
+export const App: React.FC = () => {
+  return (
+    <React.Suspense fallback={<div>Loading Form ...</div>}>
+      <ToryEditableForm Editor={Editor} Form={Form} canEdit={true} />
+    </React.Suspense>
+  );
+};
+
+export default App;

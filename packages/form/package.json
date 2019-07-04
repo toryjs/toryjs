@@ -1,0 +1,55 @@
+{
+  "name": "@toryjs/form",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Dynamic form harnessing power of mobx-state-tree and JSON schema",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "scripts": {
+    "test": "mocha --require ./mocha.config.js src/**/*.test.*",
+    "build": "tsc && tsc --module es6 --outDir ./dist/mjs --declaration false --sourceMap false",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomitrescak/dynamic-form.git"
+  },
+  "keywords": [
+    "mobx",
+    "mobx-state-tree",
+    "react"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomitrescak/dynamic-form/issues"
+  },
+  "homepage": "https://github.com/tomitrescak/dynamic-form#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/sinon": "^7.0.11",
+    "@types/sinon-chai": "^3.2.2",
+    "chai": "^4.2.0",
+    "jest-snapshot": "^24.8.0",
+    "mobx": "^5.9.4",
+    "mobx-state-tree": "^3.14.0",
+    "mocha": "^6.1.4",
+    "mst-middlewares": "^3.14.0",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default",
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "@tomino/toolbelt": "^1.1.7",
+    "ajv": "^6.10.0",
+    "ajv-errors": "^1.0.1",
+    "deepmerge": "^3.2.0",
+    "mocha-jest-snapshots": "^1.0.7",
+    "typescript": "^3.5.2"
+  }
+}

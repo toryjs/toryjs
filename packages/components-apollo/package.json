@@ -1,0 +1,47 @@
+{
+  "name": "@toryjs/components-apollo",
+  "version": "1.0.0",
+  "description": "Apollo Graphql components for Tory.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "module": "dist/mjs/index.js",
+  "scripts": {
+    "test": "mocha --require ./mocha.config.js src/**/*.test.*",
+    "test-watch": "mocha --require ./mocha.config.js src/**/*.test --watch",
+    "luis": "luis",
+    "build": "tsc -p tsconfig.dev.json && tsc -p tsconfig.prod.json",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Semantic",
+    "UI",
+    "Form",
+    "React"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@toryjs/express-api": "1.0.0",
+    "apollo-link-http": "^1.5.15",
+    "apollo-link-batch-http": "^1.2.12",
+    "apollo-link-context": "^1.0.18",
+    "apollo-cache-inmemory": "^1.6.2",
+    "graphql": "^14.4.0",
+    "apollo-client": "^2.6.3",
+    "graphql-tag": "^2.10.1",
+    "react-apollo": "^2.5.8"
+  },
+  "dependencies": {
+    "@toryjs/ui": "^1.0.0",
+    "@types/marked": "^0.6.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

@@ -1,0 +1,543 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Editor renders correctly 1`] = `
+<div
+  className="ui grid grid-Afgcdidebg"
+>
+  <div
+    className="stretched row"
+  >
+    <div
+      className="two wide column"
+    >
+      <div
+        className="ui segment"
+      >
+        Tools
+      </div>
+    </div>
+    <div
+      className="eleven wide column"
+    >
+      <form
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+        <div
+          className="fields"
+        >
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+          <div
+            className="one wide field"
+          >
+            --
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      className="three wide column"
+    >
+      <div
+        className="ui segment"
+      >
+        Properties 123
+      </div>
+    </div>
+  </div>
+</div>
+`;

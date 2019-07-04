@@ -1,0 +1,11 @@
+node_modules
+src
+wallaby.js
+yarn-error.log
+.eslintignore
+.eslintrc.js
+jest.config.js
+.vscode
+.github
+jest.config.js
+mocha.config.js

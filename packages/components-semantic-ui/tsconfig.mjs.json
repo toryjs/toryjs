@@ -1,0 +1,11 @@
+{
+  "compileOnSave": false,
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "es6",
+    "declaration": false,
+    "outDir": "./dist/mjs",
+    "sourceMap": false,
+    "inlineSourceMap": false
+  }
+}

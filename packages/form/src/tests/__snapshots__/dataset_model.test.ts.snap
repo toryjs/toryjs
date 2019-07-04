@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dataset creates a default value 1`] = `
+Object {
+  "age": 0,
+  "married": false,
+  "salary": 300,
+}
+`;
+
+exports[`Dataset creates a default value 2`] = `Object {}`;
+
+exports[`Dataset creates mst with default values 1`] = `
+Object {
+  "accounts": Array [],
+  "address": Object {
+    "number": "",
+    "street": "",
+  },
+  "age": "",
+  "dateMarried": "",
+  "fatherAge": "",
+  "married": "",
+  "name": "",
+  "salary": 300,
+}
+`;
+
+exports[`Dataset creates mst with values 1`] = `
+Object {
+  "accounts": Array [
+    Object {
+      "money": 200,
+      "number": "111-222",
+    },
+  ],
+  "address": Object {
+    "number": 4,
+    "street": "Elm street",
+  },
+  "age": 15,
+  "dateMarried": 2017-02-02T00:00:00.000Z,
+  "fatherAge": 50,
+  "married": true,
+  "name": "Tomas",
+  "salary": 2300.34,
+}
+`;
