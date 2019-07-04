@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-vanilla",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -10,8 +10,7 @@
     "test-watch": "mocha --require ./mocha.config.js src/**/*.test --watch",
     "luis1": "node fuse.js",
     "luis": "luis",
-    "build": "tsc -p tsconfig.dev.json && tsc -p tsconfig.prod.json",
-    "prepublish": "yarn build"
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.mjs.json"
   },
   "repository": {
     "type": "git",
@@ -30,7 +29,7 @@
     "@types/datejs": "^0.0.30"
   },
   "dependencies": {
-    "@toryjs/ui": "^1.0.0",
+    "@toryjs/ui": "*",
     "@types/marked": "^0.6.5",
     "@types/react-input-mask": "^2.0.1",
     "dayjs": "^1.8.14",
