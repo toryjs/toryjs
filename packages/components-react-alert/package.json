@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-react-alert",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
