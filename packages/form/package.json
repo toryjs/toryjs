@@ -1,14 +1,13 @@
 {
   "name": "@toryjs/form",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dynamic form harnessing power of mobx-state-tree and JSON schema",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "scripts": {
     "test": "mocha --require ./mocha.config.js src/**/*.test.*",
-    "build": "tsc && tsc --module es6 --outDir ./dist/mjs --declaration false --sourceMap false",
-    "prepublish": "yarn build"
+    "build": "tsc && tsc --module es6 --outDir ./dist/mjs --declaration false --sourceMap false"
   },
   "repository": {
     "type": "git",
