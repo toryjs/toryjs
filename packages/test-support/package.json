@@ -1,0 +1,47 @@
+{
+  "name": "@toryjs/test-suppoer",
+  "version": "1.0.0",
+  "description": "Semantic UI form renderer based on dynamic form generation",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "module": "dist/mjs/index.js",
+  "scripts": {
+    "test": "mocha --require ./mocha.config.js src/**/*.test.*",
+    "test-watch": "mocha --require ./mocha.config.js src/**/*.test --watch",
+    "luis1": "node fuse.js",
+    "luis": "luis",
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.mjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Semantic",
+    "UI",
+    "Form",
+    "React"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@toryjs/ui": "*",
+    "@types/chai": "^4.1.7",
+    "@types/classnames": "^2.2.8",
+    "@types/mocha": "^5.2.7",
+    "@types/react": "^16.8.22",
+    "@types/react-test-renderer": "^16.8.2",
+    "@types/sinon": "^7.0.13",
+    "@types/sinon-chai": "^3.2.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.2",
+    "mocha-jest-snapshots": "^1.0.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.5.2"
+  }
+}
