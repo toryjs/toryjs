@@ -32,12 +32,13 @@ export const Select: React.FC<FormComponentProps> = observer(props => {
     return options;
   }, [editorState, props, source]);
 
-  const { value, error } = parseProps(props, editorState, true);
+  let { value, error } = parseProps(props, editorState, true);
+  value = value == null ? def : value === '' ? '--' : value;
 
   return (
     <Dropdown
-      value={value || def}
-      data-value={value || def}
+      value={value}
+      data-value={value}
       id={source}
       search={formElement.props.search}
       selection

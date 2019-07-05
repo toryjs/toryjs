@@ -21,6 +21,7 @@ import { HtmlFormEditor } from './html_form_editor';
 import { ButtonEditor } from './buttons_editor';
 
 export const catalogueEditor: EditorComponentCatalogue = {
+  isEditor: true,
   createComponent: createEditorComponent,
   cssClass: '',
   components: {

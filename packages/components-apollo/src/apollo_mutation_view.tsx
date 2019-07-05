@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createComponents, Context, simpleHandle, setValue } from '@toryjs/ui';
+import { createComponents, Context, simpleHandle } from '@toryjs/ui';
 import { FormComponentProps, FormComponent } from '@toryjs/form';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -29,6 +29,7 @@ export const ApolloMutation = observer((props: FormComponentProps<ApolloMutation
   const [error, setError] = React.useState(null);
 
   const {
+    owner,
     formElement: {
       props: {
         mutation,
@@ -60,8 +61,11 @@ export const ApolloMutation = observer((props: FormComponentProps<ApolloMutation
     <Mutation
       mutation={parsedMutation}
       onCompleted={(data: any) => {
-        if (target) {
-          setValue(props, context, data[Object.getOwnPropertyNames(data)[0]], target as any);
+        if (target && target !== 'dataPropFirst' && target !== 'dataPropData') {
+          owner.setValue(
+            target,
+            data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]
+          );
         }
         if (onResult) {
           simpleHandle(props, onResult, context, data);
@@ -112,7 +116,12 @@ export const ApolloMutation = observer((props: FormComponentProps<ApolloMutation
 
               let dataProps = { ...props };
               if (target === 'dataPropFirst') {
-                dataProps.dataProps = { first: data && data[Object.getOwnPropertyNames(data)[0]] };
+                dataProps.dataProps = {
+                  first:
+                    data &&
+                    Object.keys(data).length > 0 &&
+                    data[Object.getOwnPropertyNames(data)[0]]
+                };
               } else if (target === 'dataPropData') {
                 dataProps.dataProps = { data };
               }

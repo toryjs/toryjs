@@ -86,8 +86,11 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
       query={parsedQuery}
       variables={currentVariables}
       onCompleted={(data: any) => {
-        if (target !== 'dataPropFirst' && target !== 'dataPropData') {
-          owner.setValue(target, data[Object.getOwnPropertyNames(data)[0]]);
+        if (target && target !== 'dataPropFirst' && target !== 'dataPropData') {
+          owner.setValue(
+            target,
+            data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]
+          );
         }
         if (onResult) {
           simpleHandle(props, onResult, context, data);
@@ -117,7 +120,9 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
 
         let dataProps = { ...props };
         if (target === 'dataPropFirst') {
-          dataProps.dataProps = { first: data[Object.getOwnPropertyNames(data)[0]] };
+          dataProps.dataProps = {
+            first: data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]
+          };
         } else if (target === 'dataPropData') {
           dataProps.dataProps = { data };
         }

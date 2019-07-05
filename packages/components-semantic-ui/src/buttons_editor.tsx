@@ -2,7 +2,7 @@ import { EditorComponent } from '@toryjs/form';
 import { propGroup, handlerProp, boundProp } from '@toryjs/ui';
 
 import { observer } from 'mobx-react';
-import { ButtonComponent, ButtonProps } from './buttons_view';
+import { ButtonComponent } from './buttons_view';
 import { colors } from './enums';
 
 // export const ApproveButton: EditorComponent = {
@@ -21,7 +21,7 @@ import { colors } from './enums';
 //   group: 'Buttons'
 // };
 
-export const ButtonEditor: EditorComponent<ButtonProps> = {
+export const ButtonEditor: EditorComponent = {
   Component: observer(ButtonComponent),
   title: 'Button',
   control: 'Button',

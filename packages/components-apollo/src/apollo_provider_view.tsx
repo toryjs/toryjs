@@ -7,6 +7,12 @@ import { ApolloProvider as Provider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+import { BatchHttpLink } from 'apollo-link-batch-http';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
+
+import fetch from 'unfetch';
+
 export type ApolloProps = {
   server: string;
   auth: string;
@@ -40,16 +46,15 @@ export const ApolloProvider: React.FC<FormComponentProps<ApolloProps>> = props =
     let httpLink;
 
     if (batchRequests) {
-      let { BatchHttpLink } = require('apollo-link-batch-http');
-      httpLink = new BatchHttpLink({ uri: server });
+      httpLink = new BatchHttpLink({ uri: server, fetch });
     } else {
-      httpLink = require('apollo-link-http').createHttpLink({
-        uri: server
+      httpLink = createHttpLink({
+        uri: server,
+        fetch
       });
     }
 
     if (auth) {
-      const { setContext } = require('apollo-link-context');
       const authLink = setContext((_: any, { headers }: any) => {
         const token = localStorage.getItem(tokenName || 'CORPIX_TOKEN');
         return {

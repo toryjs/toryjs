@@ -1,29 +1,12 @@
-import * as React from 'react';
-
 import { observer } from 'mobx-react';
 import { Checkbox } from 'semantic-ui-react';
-import { FormComponentProps, FormComponent } from '@toryjs/form';
-import { DynamicComponent, processControl, getValue } from '@toryjs/ui';
+import { FormComponent } from '@toryjs/form';
+import { getValue } from '@toryjs/ui';
+import { createCheckboxComponent } from '@toryjs/components-vanilla';
 
 const checkboxProps = ['radio', 'slider', 'toggle'];
 
-const CheckboxComponent: React.FC<FormComponentProps> = props => {
-  const { source, disabled, controlProps, value, handleChange } = processControl(props);
-
-  return (
-    <DynamicComponent
-      {...props}
-      control={Checkbox}
-      controlProps={checkboxProps}
-      name={source}
-      label={controlProps.text}
-      readOnly={disabled}
-      checked={!!value}
-      onChange={handleChange}
-      disabled={disabled}
-    />
-  );
-};
+const CheckboxComponent = createCheckboxComponent(Checkbox, checkboxProps);
 
 export const CheckboxView: FormComponent = {
   Component: observer(CheckboxComponent),

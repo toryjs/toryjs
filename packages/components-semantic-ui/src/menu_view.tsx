@@ -55,6 +55,7 @@ const menuControlProps = [
   'inverted',
   'pagination',
   'pointing',
+  'position',
   'secondary',
   'size',
   'stackable',
@@ -64,7 +65,7 @@ const menuControlProps = [
   'widths'
 ];
 
-const menuItemControlProps = ['content', 'icon'];
+const menuItemControlProps = ['content', 'icon', 'active'];
 
 export const MenuItem: React.FC<FormComponentProps<MenuItemProps>> = props => {
   const context = React.useContext(Context);

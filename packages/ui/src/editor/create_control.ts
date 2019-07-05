@@ -96,8 +96,8 @@ export function editorProps(element: FormDataSet, props: FormComponentProps) {
 
   const onMouseOver = React.useCallback(
     (e: React.ChangeEvent<HTMLDivElement>) => {
-      e.stopPropagation();
-      e.preventDefault();
+      // e.stopPropagation();
+      // e.preventDefault();
 
       let el = ele;
       // if (!e.target.getAttribute('data-editor-id')) {

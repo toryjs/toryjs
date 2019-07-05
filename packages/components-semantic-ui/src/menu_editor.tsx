@@ -2,7 +2,7 @@ import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 
 import { observer } from 'mobx-react';
-import { propGroup, prop, handlerProp, DropComponentEditor } from '@toryjs/ui';
+import { propGroup, prop, handlerProp, DropComponentEditor, boundProp } from '@toryjs/ui';
 
 import { MenuItem, MenuView, MenuProps } from './menu_view';
 import { colors } from './enums';
@@ -28,7 +28,7 @@ export const MenuEditor: EditorComponent = {
         label: 'Attached',
         type: 'string',
         $enum: [
-          { text: 'None', value: '' },
+          { text: 'None', value: '--' },
           { text: 'top', value: 'Top' },
           { text: 'bottom', value: 'Bottom' }
         ]
@@ -90,11 +90,12 @@ export const MenuItemEditor: EditorComponent = {
   group: 'Form',
   props: {
     ...propGroup('Menu', {
-      content: prop({}),
-      icon: prop({})
+      content: prop(),
+      icon: prop(),
+      active: boundProp({ type: 'boolean' })
     }),
     ...propGroup('Handlers', {
-      onClick: handlerProp({})
+      onClick: handlerProp()
     })
   }
 };

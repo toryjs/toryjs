@@ -1,4 +1,5 @@
 export const colors = [
+  { value: '--', text: 'None' },
   { value: 'red', text: 'red' },
   { value: 'orange', text: 'orange' },
   { value: 'yellow', text: 'yellow' },
@@ -15,6 +16,7 @@ export const colors = [
 ];
 
 export const sizes = [
+  { value: '--', text: 'None' },
   { value: 'mini', text: 'mini' },
   { value: 'tiny', text: 'tiny' },
   { value: 'small', text: 'small' },
@@ -25,6 +27,7 @@ export const sizes = [
 ];
 
 export const align = [
+  { value: '--', text: 'None' },
   { value: 'left', text: 'left' },
   { value: 'center', text: 'center' },
   { value: 'right', text: 'right' },
@@ -32,6 +35,7 @@ export const align = [
 ];
 
 export const verticalAlign = [
+  { value: '--', text: 'None' },
   { value: 'top', text: 'top' },
   { value: 'middle', text: 'middle' },
   { value: 'bottom', text: 'bottom' }

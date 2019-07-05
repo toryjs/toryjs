@@ -378,7 +378,7 @@ export class DragDrop<T> {
     //   return;
     // }
 
-    console.log(index + ':' + pos);
+    // console.log(index + ':' + pos);
 
     let className: string;
     if (index === 0 && pos === 'top') {

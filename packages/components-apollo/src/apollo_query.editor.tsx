@@ -1,7 +1,16 @@
 import React from 'react';
 
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
-import { prop, propGroup, handlerProp, boundProp, dataProp, getValue, Context } from '@toryjs/ui';
+import {
+  prop,
+  propGroup,
+  handlerProp,
+  boundProp,
+  dataProp,
+  getValue,
+  Context,
+  createEditorContainer
+} from '@toryjs/ui';
 
 import gql from 'graphql-tag';
 import { MockedProvider } from 'react-apollo/test-utils';
@@ -99,7 +108,7 @@ export const handlerProps = propGroup('Handlers', {
   })
 });
 
-const ApolloQueryEditorComponent = (props: FormComponentProps<ApolloQueryProps>) => {
+const ApolloQueryEditorComponent = observer((props: FormComponentProps<ApolloQueryProps>) => {
   const controlProps = props.formElement.props;
   const context = React.useContext(Context);
   controlProps.query;
@@ -132,10 +141,10 @@ const ApolloQueryEditorComponent = (props: FormComponentProps<ApolloQueryProps>)
     );
   }
   return <ApolloQueryView.Component {...props} />;
-};
+});
 
 export const ApolloQueryEditor: EditorComponent = {
-  Component: observer(ApolloQueryEditorComponent),
+  Component: createEditorContainer(ApolloQueryEditorComponent),
   title: 'Apollo Query',
   control: 'ApolloQuery',
   thumbnail: thumbnails,

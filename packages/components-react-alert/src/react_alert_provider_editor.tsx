@@ -24,60 +24,66 @@ export const AlertProviderEditor: EditorComponent = {
       control: 'Select',
       group: 'Alert',
       type: 'string',
-      $enum: [
-        {
-          text: 'Top Right',
-          value: positions.TOP_RIGHT
-        },
-        {
-          text: 'Top Center',
-          value: positions.TOP_CENTER
-        },
-        {
-          text: 'Top Left',
-          value: positions.TOP_LEFT
-        },
-        {
-          text: 'Bottom Center',
-          value: positions.BOTTOM_CENTER
-        },
-        {
-          text: 'Bottom Left',
-          value: positions.BOTTOM_LEFT
-        },
-        {
-          text: 'Bottom Right',
-          value: positions.BOTTOM_RIGHT
-        },
-        {
-          text: 'Middle',
-          value: positions.MIDDLE
-        },
-        {
-          text: 'Middle Left',
-          value: positions.MIDDLE_LEFT
-        },
-        {
-          text: 'Middle Right',
-          value: positions.MIDDLE_RIGHT
-        }
-      ]
+      documentation: 'Position where to display the alert',
+      props: {
+        options: [
+          {
+            text: 'Top Right',
+            value: positions.TOP_RIGHT
+          },
+          {
+            text: 'Top Center',
+            value: positions.TOP_CENTER
+          },
+          {
+            text: 'Top Left',
+            value: positions.TOP_LEFT
+          },
+          {
+            text: 'Bottom Center',
+            value: positions.BOTTOM_CENTER
+          },
+          {
+            text: 'Bottom Left',
+            value: positions.BOTTOM_LEFT
+          },
+          {
+            text: 'Bottom Right',
+            value: positions.BOTTOM_RIGHT
+          },
+          {
+            text: 'Middle',
+            value: positions.MIDDLE
+          },
+          {
+            text: 'Middle Left',
+            value: positions.MIDDLE_LEFT
+          },
+          {
+            text: 'Middle Right',
+            value: positions.MIDDLE_RIGHT
+          }
+        ]
+      }
     }),
-    timeout: prop({ type: 'number' }),
-    offset: prop(),
+    timeout: prop({ type: 'number', documentation: 'Time in ms when alert is hidden' }),
+    offset: prop({ documentation: 'How far from the window edge is the alert displayed' }),
     transition: prop({
       control: 'Select',
       type: 'string',
-      $enum: [
-        {
-          text: 'Fade',
-          value: transitions.FADE
-        },
-        {
-          text: 'Scale',
-          value: transitions.SCALE
-        }
-      ]
+      documentation: 'Animation used to display the alert',
+      props: {
+        options: [
+          {
+            text: 'Fade',
+            value: transitions.FADE
+          },
+          {
+            text: 'Scale',
+            value: transitions.SCALE
+          }
+        ]
+      }
     })
   })
 };

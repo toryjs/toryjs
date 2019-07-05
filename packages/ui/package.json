@@ -52,6 +52,7 @@
   "dependencies": {
     "@tomino/toolbelt": "^1.1.7",
     "@toryjs/form": "^1.0.0",
+    "@toryjs/decoder": "^1.0.0",
     "@types/prismjs": "^1.16.0",
     "@types/react-alert": "^5.2.0",
     "@types/react-router": "^5.0.2",

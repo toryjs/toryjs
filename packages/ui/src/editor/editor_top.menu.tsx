@@ -49,7 +49,11 @@ export const TopMenu = ({ fileOperations, allowSave }: Props) => {
       <Menu.Item icon="redo" onClick={context.undoManager.redo} />
 
       <Menu.Menu position="right">
-        <Menu.Item icon="ban" content="Reset" onClick={() => context.editorVersion++} />
+        <Menu.Item
+          icon="sync alternate"
+          content="Restart"
+          onClick={() => context.editorVersion++}
+        />
         {/* <ModalUpload manager={manager} /> */}
         {/* <ModalPreview /> */}
         {/* <ModalCode /> */}

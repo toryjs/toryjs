@@ -1,7 +1,14 @@
 import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 
-import { prop, propGroup, Context, getValue, EditorContext } from '@toryjs/ui';
+import {
+  prop,
+  propGroup,
+  Context,
+  getValue,
+  EditorContext,
+  createEditorContainer
+} from '@toryjs/ui';
 import { observer } from 'mobx-react';
 import { thumbnails, variables, handlerProps } from './apollo_query.editor';
 import { ApolloMutationView, ApolloMutationProps } from './apollo_mutation_view';
@@ -53,7 +60,7 @@ const ApolloMutationEditorComponent = observer((props: FormComponentProps<Apollo
 });
 
 export const ApolloMutationEditor: EditorComponent = {
-  Component: ApolloMutationEditorComponent,
+  Component: createEditorContainer(ApolloMutationEditorComponent),
   title: 'Apollo Mutation',
   control: 'ApolloMutation',
   thumbnail: thumbnails,

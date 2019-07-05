@@ -7,7 +7,7 @@ import { FlexView, FlexProps } from './flex_view';
 export const FlexEditorComponent: React.FC<FormComponentProps<FlexProps>> = props => (
   <DropComponentEditor
     {...props}
-    Component={FlexView.Component}
+    Component={FlexView.Component as any}
     layout={props.formElement.props.layout as any}
   />
 );

@@ -347,6 +347,7 @@ export const list = (theme: Theme) => css`
     flex: 1 1 100%;
     padding-left: 3px;
     cursor: pointer;
+    color: #4183c4;
   }
 
   .pointer {

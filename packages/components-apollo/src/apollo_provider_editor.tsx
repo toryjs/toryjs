@@ -1,16 +1,23 @@
 import React from 'react';
 
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
-import { propGroup, prop, Context, DynamicComponent, handlerProp } from '@toryjs/ui';
+import {
+  propGroup,
+  prop,
+  Context,
+  DynamicComponent,
+  handlerProp,
+  createEditorContainer
+} from '@toryjs/ui';
 
 import { ApolloProvider, ApolloProps } from './apollo_provider_view';
 import { thumbnails } from './apollo_query.editor';
 
-const Provider = (props: any) => (
-  <div onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>
-    <ApolloProvider {...props} />
-  </div>
-);
+// const Provider = (props: any) => (
+//   <div onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>
+//     <ApolloProvider {...props} />
+//   </div>
+// );
 
 export const ApolloProviderEditorComponent: React.FC<FormComponentProps<ApolloProps>> = props => {
   const controlProps = props.formElement.props;
@@ -24,13 +31,13 @@ export const ApolloProviderEditorComponent: React.FC<FormComponentProps<ApolloPr
     };
   }
 
-  return <DynamicComponent {...props} control={Provider} preserveProps={true} />;
+  return <DynamicComponent {...props} control={ApolloProvider} preserveProps={true} />;
 };
 
 ApolloProviderEditorComponent.displayName = 'ApolloProviderEditor';
 
 export const ApolloProviderEditor: EditorComponent = {
-  Component: ApolloProviderEditorComponent,
+  Component: createEditorContainer(ApolloProviderEditorComponent),
   title: 'Apollo Provider',
   control: 'ApolloProvider',
   thumbnail: thumbnails,

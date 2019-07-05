@@ -12,8 +12,8 @@ import { ReactComponent } from './common';
 
 export function createRadioComponent(
   component: ReactComponent,
-  extraProps: any,
-  radioControls: (item: Option) => JSX.Element
+  extraProps?: any,
+  radioControls?: (item: Option) => JSX.Element
 ) {
   const RadioComponent: React.FC<FormComponentProps> = props => {
     const { source, disabled, error, owner, value, context } = processControl(props, false);
@@ -28,7 +28,11 @@ export function createRadioComponent(
     const handleToggleChange = React.useCallback(
       (e: React.MouseEvent<HTMLInputElement>) => {
         // find value
-        setValue(props, context, e.currentTarget.value);
+        setValue(
+          props,
+          context,
+          e.currentTarget.getAttribute('data-value') || e.currentTarget.value
+        );
       },
       [context, props]
     );
@@ -42,6 +46,7 @@ export function createRadioComponent(
               label: item.text,
               disabled,
               value: item.value,
+              'data-value': item.value,
               checked: value === item.value,
               error: error,
               onChange: handleToggleChange,

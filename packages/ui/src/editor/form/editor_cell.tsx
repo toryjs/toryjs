@@ -178,3 +178,5 @@ export const DropCell = observer((props: DropCellProps) => {
     </div>
   );
 });
+
+DropCell.displayName = 'DropCell';

@@ -70,9 +70,7 @@ export function testStandard(testProps: TestProps) {
     showReadOnly: false
   });
   const wrapper = renderer.create(component());
-  require('chai')
-    .expect(wrapper)
-    .toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 }
 export function testReadonly(props: TestProps) {
   const component = prepareComponent(props, {
@@ -81,9 +79,7 @@ export function testReadonly(props: TestProps) {
     showStandard: false
   });
   const wrapper = renderer.create(component());
-  require('chai')
-    .expect(wrapper)
-    .toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 }
 export function testEditor(props: TestProps) {
   const component = prepareComponent(props, {
@@ -94,9 +90,7 @@ export function testEditor(props: TestProps) {
     showToolBox: false
   });
   const wrapper = renderer.create(component());
-  require('chai')
-    .expect(wrapper)
-    .toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 }
 
 export function bindCatalogues(

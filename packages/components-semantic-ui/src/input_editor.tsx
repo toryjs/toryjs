@@ -16,7 +16,7 @@ export const InputEditor: EditorComponent = {
     icon: boundProp(),
     iconPosition: boundProp({
       control: 'Select',
-      props: { options: [{ text: 'Left', value: 'left' }, { text: 'Right', value: 'right' }] }
+      props: { options: [{ text: 'Right', value: '--' }, { text: 'Left', value: 'left' }] }
     }),
     inverted: boundProp({ type: 'boolean' }),
     inputLabel: boundProp(),

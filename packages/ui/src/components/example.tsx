@@ -9,7 +9,9 @@ import { ToryForm } from './form';
 import { LeftPane } from '../editor/form_store';
 import { formDatasetToJS } from '../helpers';
 
-const LazyEditor = React.lazy(() => import('./editor'));
+// const LazyEditor = React.lazy(() => import('./editor'));
+
+import { ToryEditor } from './editor';
 
 export const exampleCss = css`
   .buttons {
@@ -71,11 +73,12 @@ function renderView(
     );
   } else if (view === 'editor') {
     return (
-      <LazyEditor
+      <ToryEditor
         componentCatalogue={catalogue}
         editorCatalogue={editorCatalogue}
         storage={storage}
         handlers={handlers}
+        project={project}
         loadStyles={false}
         theme={theme || 'light'}
         hideViews={hideViews || ['pages', 'all']}
@@ -132,15 +135,15 @@ export const DocsForm: React.FC<Props> = props => {
           <i className="eye icon" /> View
         </button>
       </div>
-      <div style={view === 'editor' ? { resize: 'vertical', overflow: 'hidden' } : {}}>
+      <div key={view} style={view === 'editor' ? { resize: 'vertical', overflow: 'hidden' } : {}}>
         <div
           className={editorCss}
           key={view}
-          style={view === 'editor' ? { minHeight: '250px' } : {}}
+          style={view === 'editor' ? { minHeight: '400px' } : {}}
         >
-          <React.Suspense fallback={<div>Loading ...</div>}>
-            {renderView(view, storage, props)}
-          </React.Suspense>
+          {/* <React.Suspense fallback={<div>Loading ...</div>}> */}
+          {renderView(view, storage, props)}
+          {/* </React.Suspense> */}
         </div>
       </div>
     </div>

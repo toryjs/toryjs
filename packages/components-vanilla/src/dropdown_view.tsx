@@ -23,15 +23,17 @@ export type MenuChildProps = {
 
 export type DropdownProps = Props;
 
+type ProcessedProps = { loading: boolean; error: string };
+
 export function createDropdownComponent(
   component: ReactComponent,
   dropdownProps: string[] = [],
-  extraProps: any,
-  renderOptions?: (
+  processProps: (
     props: FormComponentProps,
+    computedProps: ProcessedProps,
     options: Option[],
     context: ContextType
-  ) => JSX.Element[],
+  ) => any,
   renderElementOptions?: (props: FormComponentProps, context: ContextType) => JSX.Element[]
 ) {
   const DropdownView = observer((props: FormComponentProps<DropdownProps>) => {
@@ -81,7 +83,7 @@ export function createDropdownComponent(
     }, [asyncOptionsHandler, context, options, owner, props]);
 
     const filter = filterSource ? owner.getValue(filterSource) : null;
-    let filteredOptions = filterSource
+    let filteredOptions: Option[] = filterSource
       ? currentOptions.filter((v: any) => v[filterColumn] === filter)
       : currentOptions;
 
@@ -97,21 +99,23 @@ export function createDropdownComponent(
       return (
         <DynamicComponent
           {...props}
-          {...extraProps}
+          {...processProps(
+            props,
+            { loading: loading === true ? true : undefined, error },
+            filteredOptions,
+            context
+          )}
           control={component}
           controlProps={dropdownProps}
-          error={error}
           options={filteredOptions}
-          loading={loading === true ? 'true' : undefined}
           showError={true}
           onChange={handleChange}
           value={value || ''}
-          children={renderOptions ? renderOptions(props, filteredOptions, context) : undefined}
         />
       );
     }
     return (
-      <DynamicComponent {...props} {...extraProps} control={component} controlProps={dropdownProps}>
+      <DynamicComponent {...props} control={component} controlProps={dropdownProps}>
         {renderElementOptions && renderElementOptions(props, context)}
       </DynamicComponent>
     );
@@ -122,13 +126,15 @@ export function createDropdownComponent(
 export const DropdownView = createDropdownComponent(
   'select',
   [],
-  {},
-  (_, options) =>
-    options.map((e, i) => (
+  (_props, computedProps, options) => ({
+    loading: computedProps.loading ? 'true' : undefined,
+    error: computedProps.error,
+    children: options.map((e, i) => (
       <option key={i} value={e.value}>
         {e.text}
       </option>
-    )),
+    ))
+  }),
   (props, context) =>
     props.formElement.elements.map((e, i) => (
       <option key={i} value={e.uid}>

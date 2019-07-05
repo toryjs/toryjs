@@ -1,5 +1,5 @@
 luis
-./src
+src
 node_modules
 .gitignore
 index.html
@@ -13,4 +13,5 @@ yarn-error.log
 .eslintignore
 .eslintrc.js
 jest.config.js
+public
 

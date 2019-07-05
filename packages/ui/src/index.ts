@@ -48,7 +48,7 @@ export { IProject, IStorage } from './storage/common_storage';
 
 // editor
 
-export { initSingleEditor } from './components/single_editor';
+export { createEditorContainer } from './components/single_editor';
 export { EditorState } from './editor/editor_state';
 export { EditorContext, EditorContextType } from './editor/editor_context';
 export { DropComponentEditor } from './editor/droppable_editor';

@@ -19,6 +19,7 @@ export function merge(...catalogues: any[]): any {
     throw new Error('The catalogue needs to define a createComponent function!');
   }
   return {
+    isEditor: catalogues.some(c => c.isEditor),
     createComponent: catalogues.find(c => c.createComponent).createComponent,
     cssClass: catalogues.map(c => (c.cssClass ? c.cssClass + ' ' : '')).join(''),
     components: Object.assign({}, ...catalogues.map(c => c.components)) as any
@@ -48,7 +49,13 @@ export function schemaDatasetToJS(schema: any, faker = true): JSONSchema {
 
 export function createComponents(props: FormComponentProps, className: string = null) {
   if (!props.formElement.elements || props.formElement.elements.length === 0) {
-    return undefined;
+    if ((props as any).dangerouslySetInnerHTML) {
+      return undefined;
+    }
+    return props.catalogue.isEditor &&
+      (props.catalogue.components[props.formElement.control] as any).provider ? (
+        <div>Component has no children 🤨</div>
+      ) : null;
   }
   return props.formElement.elements.map((e, i) => (
     <React.Fragment key={i}>

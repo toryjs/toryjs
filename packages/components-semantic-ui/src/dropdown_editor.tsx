@@ -14,14 +14,14 @@ import {
 } from '@toryjs/ui';
 import { Segment } from 'semantic-ui-react';
 
-import { DropdownView, DropdownProps } from './dropdown_view';
+import { DropdownView } from './dropdown_view';
 
 const templates = [
   { text: 'Component View', value: 'component' },
   { text: 'Items', value: 'items' }
 ];
 
-const DropdownEditorComponent = (props: FormComponentProps<DropdownProps>) => {
+const DropdownEditorComponent = (props: FormComponentProps) => {
   const { formElement } = props;
   const template = formElement.props.template;
 

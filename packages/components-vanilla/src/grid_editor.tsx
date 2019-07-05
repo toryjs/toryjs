@@ -81,6 +81,8 @@ const EditorCell = (props: DropCellProps) => {
   );
 };
 
+EditorCell.displayName = 'EditorCell';
+
 export const GridEditorComponent: React.FC<
   FormComponentProps<GridProps, GridChildProps> & LayoutProps
 > = props => {

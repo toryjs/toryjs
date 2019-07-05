@@ -60,6 +60,12 @@ export function onChangeHandler(
       : sui
         ? sui.value
         : e.currentTarget.value;
+
+  // weird hack for dropdown which is not setting the empty value properly
+  if (currentValue === '--') {
+    currentValue = '';
+  }
+
   setValue(
     this.props,
     this.editorState,

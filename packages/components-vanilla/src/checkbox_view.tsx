@@ -10,8 +10,8 @@ import { ReactComponent } from './common';
 export function createCheckboxComponent(
   component: ReactComponent,
   checkboxProps: string[] = [],
-  extraProps: any,
-  extraControls: (props: FormComponentProps) => JSX.Element
+  extraProps?: any,
+  extraControls?: (props: FormComponentProps) => JSX.Element
 ) {
   const Checkbox: React.FC<FormComponentProps> = props => {
     const { source, disabled, controlProps, value, handleChange, error } = processControl(props);

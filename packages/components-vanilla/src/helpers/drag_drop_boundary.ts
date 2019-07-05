@@ -41,6 +41,9 @@ export function showHandles(
   props: FormComponentProps,
   context: EditorContextType
 ) {
+  e.preventDefault();
+  console.log('Handles ...');
+
   if (!leftHandle) {
     leftHandle = createHandle();
     rightHandle = createHandle();

@@ -135,7 +135,7 @@ export const TableEditor: EditorComponent = {
         control: 'Select',
         props: {
           options: [
-            { text: '', value: '' },
+            { text: '', value: '--' },
             { text: 'Top', value: 'top' },
             { text: 'Bottom', value: 'bottom' },
             { text: 'Both', value: true }
@@ -147,7 +147,7 @@ export const TableEditor: EditorComponent = {
         control: 'Select',
         props: {
           options: [
-            { text: '', value: '' },
+            { text: '', value: '--' },
             { text: 'Very', value: 'very' },
             { text: 'Normal', value: true }
           ]
@@ -161,7 +161,7 @@ export const TableEditor: EditorComponent = {
         control: 'Select',
         props: {
           options: [
-            { text: '', value: '' },
+            { text: '', value: '--' },
             { text: 'Very', value: 'very' },
             { text: 'Normal', value: true }
           ]
@@ -172,7 +172,7 @@ export const TableEditor: EditorComponent = {
         control: 'Select',
         props: {
           options: [
-            { text: '', value: '' },
+            { text: '', value: '--' },
             { text: 'Very', value: 'very' },
             { text: 'Normal', value: true }
           ]

@@ -16,7 +16,7 @@ export const HeaderEditor: EditorComponent = {
       control: 'Select',
       props: {
         options: [
-          { text: 'None', value: '' },
+          { text: 'None', value: '--' },
           { text: 'Top', value: 'top' },
           { text: 'Bottom', value: 'bottom' }
         ]
@@ -31,7 +31,7 @@ export const HeaderEditor: EditorComponent = {
       control: 'Select',
       props: {
         options: [
-          { text: 'None', value: '' },
+          { text: 'None', value: '--' },
           { text: 'Left', value: 'left' },
           { text: 'Right', value: 'right' }
         ]

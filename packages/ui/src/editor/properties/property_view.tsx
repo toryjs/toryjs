@@ -50,14 +50,14 @@ export const RenderProps = ({
             editorState,
             g.key && (!g.values[0].props || g.values[0].props.display !== 'group')
               ? [
-                  {
-                    control: 'Group',
-                    props: {
-                      text: g.key || groupName
-                    },
-                    elements: g.values
-                  }
-                ]
+                {
+                  control: 'Group',
+                  props: {
+                    text: g.key || groupName
+                  },
+                  elements: g.values
+                }
+              ]
               : g.values,
             activeElement.props,
             handlers,
@@ -207,9 +207,9 @@ export const PropertyEditor = observer(() => {
     () =>
       editorElement
         ? context
-            .cachedProps(editorElement)
-            .filter(p => p.group === 'Editor')
-            .concat(context.editorProps)
+          .cachedProps(editorElement)
+          .filter(p => p.group === 'Editor')
+          .concat(context.editorProps)
         : [],
     [context, editorElement]
   );
@@ -323,7 +323,7 @@ export const PropertyEditor = observer(() => {
             schemaHandlers as any,
             null,
             context /* catalogue */,
-            activeSchema.title,
+            activeSchema.uid,
             searchProperty
           )}
 
@@ -333,12 +333,12 @@ export const PropertyEditor = observer(() => {
           {activeElement &&
             activeElement.parent.parent &&
             (!activeElement.props || !activeElement.props.locked) && (
-              <Button
-                onClick={context.project.state.deleteActiveElement}
-                content={config.i18n`Delete`}
-                icon="trash"
-              />
-            )}
+            <Button
+              onClick={context.project.state.deleteActiveElement}
+              content={config.i18n`Delete`}
+              icon="trash"
+            />
+          )}
           {selectedSchema && <DeleteSchema schema={selectedSchema} />}
         </div>
       </div>

@@ -34,6 +34,7 @@ export interface FormDataSet<P = any, C = any, CH = any> extends FormElementType
 
 type SchemaElementType = DataSet<JSONSchemaBase>;
 export interface SchemaDataSet extends SchemaElementType {
+  uid: string;
   id: string;
   required: string[];
   parent: SchemaDataSet;

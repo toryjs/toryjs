@@ -1,8 +1,16 @@
-import * as React from 'react';
-import { FormComponentProps, config, FormComponent } from '@toryjs/form';
+import { FormComponent } from '@toryjs/form';
 import { Button } from 'semantic-ui-react';
-import { SemanticICONS } from 'semantic-ui-react';
-import { DynamicComponent, simpleHandle, Context } from '@toryjs/ui';
+import { createButtonComponent } from '@toryjs/components-vanilla';
+
+const buttonProps = ['color', 'src', 'icon', 'content'];
+
+export const ButtonComponent = createButtonComponent(Button, buttonProps);
+
+ButtonComponent.displayName = 'Button';
+
+export const ButtonView: FormComponent = {
+  Component: ButtonComponent
+};
 
 // export const Approve: React.FC<FormComponentProps> = ({
 //   formElement,
@@ -53,51 +61,6 @@ import { DynamicComponent, simpleHandle, Context } from '@toryjs/ui';
 // export const DeleteButton: FormComponent = {
 //   Component: Delete
 // };
-
-export type ButtonProps = {
-  target: string;
-  icon: SemanticICONS;
-  color: string;
-  content: string;
-  onClick: any;
-};
-
-const buttonProps = ['color', 'src', 'icon', 'content'];
-
-export const ButtonComponent: React.FC<FormComponentProps<ButtonProps>> = props => {
-  const context = React.useContext(Context);
-  const onClick = React.useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (props.formElement.props.onClick) {
-        simpleHandle(props, props.formElement.props.onClick, context, { e });
-      } else {
-        console.error('Button does not define a handler');
-      }
-    },
-    [context, props]
-  );
-
-  if (props.readOnly) {
-    return null;
-  }
-
-  return (
-    <DynamicComponent
-      {...props}
-      control={Button}
-      controlProps={buttonProps}
-      onClick={onClick}
-      as={props.formElement.props.target ? config.linkElement : undefined}
-      {...config.linkElementTarget(props.formElement.props.target)}
-    />
-  );
-};
-
-ButtonComponent.displayName = 'Button';
-
-export const ButtonView: FormComponent = {
-  Component: ButtonComponent
-};
 
 // export const Reject: React.FC<FormComponentProps> = ({
 //   formElement,

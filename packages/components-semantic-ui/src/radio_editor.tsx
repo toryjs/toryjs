@@ -10,9 +10,12 @@ export const RadioEditor: EditorComponent = {
   bound: true,
   props: {
     ...propGroup('Radio', {
-      value: boundProp(),
-      schemaSource: dataProp()
+      value: boundProp({ documentation: 'Current value' }),
+      schemaSource: dataProp({
+        documentation: 'Dataset item that holds the enumeration of available values'
+      }),
+      vertical: boundProp({ type: 'boolean', documentation: 'Renders in a vertical mode' })
     }),
-    options: tableProp({ bound: true }, 'Options')
+    options: tableProp({ bound: true, documentation: 'List of available options' }, 'Options')
   }
 };

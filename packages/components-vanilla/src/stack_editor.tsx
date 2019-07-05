@@ -7,7 +7,7 @@ import { StackView, StackProps } from './stack_view';
 export const StackEditorComponent: React.FC<FormComponentProps<StackProps>> = props => (
   <DropComponentEditor
     {...props}
-    Component={StackView.Component}
+    Component={StackView.Component as any}
     layout={props.formElement.props.layout}
   />
 );
