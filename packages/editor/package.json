@@ -1,0 +1,71 @@
+{
+  "name": "@toryjs/editor",
+  "version": "1.0.1",
+  "description": "Editor for Tory.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "module": "dist/mjs/index.js",
+  "scripts": {
+    "test": "mocha --require ./mocha.config.js src/**/*.test.*",
+    "test-watch": "mocha --require ./mocha.config.js src/**/*.test --watch",
+    "luis1": "node fuse.js",
+    "luis": "luis",
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.mjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "keywords": [
+    "Semantic",
+    "UI",
+    "Form",
+    "React"
+  ],
+  "author": "Tomi Trescak <tomi.trescak@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@tomino/test-support": "^4.1.7",
+    "@tomino/toolbelt": "*",
+    "@types/classnames": "^2.2.8",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "12.0.102.0.10",
+    "@types/prismjs": "^1.16.0",
+    "@types/react": "16.8.22",
+    "@types/react-alert": "^5.2.0",
+    "@types/react-router": "^5.0.2",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/react-test-renderer": "16.8.2",
+    "@types/sinon": "^7.0.13",
+    "@types/sinon-chai": "^3.2.2",
+    "@types/webfontloader": "^1.6.29",
+    "chai": "^4.2.0",
+    "luis": "^3.2.13",
+    "mocha": "^6.1.2",
+    "mocha-jest-snapshots": "^1.0.7",
+    "react-test-renderer": "^16.8.6",
+    "sinon": "^7.3.2",
+    "sinon-chai": "^3.3.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@tomino/toolbelt": "^1.1.7",
+    "@toryjs/form": "^1.0.0",
+    "@toryjs/ui": "^1.0.0",
+    "classnames": "^2.2.6",
+    "emotion": "^10.0.9",
+    "mobx": "^5.9.4",
+    "mobx-react": "^6.0.3",
+    "mobx-state-tree": "^3.14.0",
+    "prismjs": "^1.16.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-multi-split-pane": "^0.1.1",
+    "react-simple-code-editor": "^0.9.10",
+    "react-transition-group": "^4.1.1",
+    "semantic-ui-react": "^0.87.2",
+    "typescript": "^3.5.2"
+  }
+}
