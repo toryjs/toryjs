@@ -1,7 +1,6 @@
 import { JSONSchema } from '@toryjs/form';
 
-import { create } from '@toryjs/ui';
-import { prepareComponent } from './common';
+import { prepareComponent, create } from './common';
 
 const schema: JSONSchema = {
   type: 'object',

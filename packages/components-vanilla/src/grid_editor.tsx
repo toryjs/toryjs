@@ -9,17 +9,17 @@ import {
   DropCell,
   propGroup,
   boundProp,
-  EditorContextType,
-  EditorContext,
-  DynamicComponent
+  Context,
+  DynamicComponent,
+  ContextType
 } from '@toryjs/ui';
 
 import { LayoutProps, generateEmptyCells, adjustPosition } from './helpers/grid';
 import { showHandles, timeHideHandles } from './helpers/drag_drop_boundary';
 
-function drop(_e: React.DragEvent, props: DropCellProps, context: EditorContextType): boolean {
-  const item = context.dragItem;
-  context.dragItem = null;
+function drop(_e: React.DragEvent, props: DropCellProps, context: ContextType): boolean {
+  const item = context.editor.dragItem;
+  context.editor.dragItem = null;
 
   let sourceElement = item.element;
   let targetElement = props.formElement;
@@ -86,7 +86,7 @@ EditorCell.displayName = 'EditorCell';
 export const GridEditorComponent: React.FC<
   FormComponentProps<GridProps, GridChildProps> & LayoutProps
 > = props => {
-  const context = React.useContext(EditorContext);
+  const context = React.useContext(Context);
   const controls = generateEmptyCells(context, props, props.formElement, 'EditorCell');
 
   // we replace the form element with the new one

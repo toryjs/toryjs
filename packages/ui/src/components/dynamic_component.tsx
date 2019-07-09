@@ -8,7 +8,7 @@ import { handle, getValue, isNullOrEmpty, valueSource } from '../helpers';
 import { ErrorBoundary } from './error_boundary';
 import { createComponents } from '../helpers';
 import { observer } from 'mobx-react';
-import { ErrorView } from './properties/error_view';
+import { ErrorView } from './error_view';
 
 export const breakingLabel = css`
   display: block;
@@ -51,7 +51,8 @@ const omitKeys = [
   'dataProps',
   'hideLabel',
   'labelPosition',
-  'extraControls'
+  'extraControls',
+  'computedMatch'
 ];
 
 function omit(obj: any, keys: string[]) {
@@ -159,10 +160,6 @@ export function paintProps<C>(
       }
     }
     // result['extra'] = props.extra;
-  }
-
-  if (props.dataProps) {
-    result['dataProps'] = props.dataProps;
   }
 
   // these events are usually passed from the control itself

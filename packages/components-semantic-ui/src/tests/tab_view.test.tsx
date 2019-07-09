@@ -1,6 +1,5 @@
-import { create } from '@toryjs/ui';
 import { JSONSchema, FormElement } from '@toryjs/form';
-import { prepareComponent } from './common';
+import { prepareComponent, create } from './common';
 import { clone } from '@tomino/toolbelt';
 
 describe('Tabs', () => {

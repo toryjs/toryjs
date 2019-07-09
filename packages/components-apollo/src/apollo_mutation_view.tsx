@@ -128,8 +128,7 @@ export const ApolloMutation = observer((props: FormComponentProps<ApolloMutation
 
               const components = createComponents({
                 ...dataProps,
-                handlers,
-                extra: { loading, error, data }
+                handlers
               });
               if (error) {
                 return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { docsGroup } from '@toryjs/ui';
+import { docsGroup } from '@toryjs/editor';
 
 import { catalogue } from '../catalogue';
 import { catalogueEditor } from '../catalogue_editor';

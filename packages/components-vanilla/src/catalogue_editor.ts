@@ -19,6 +19,7 @@ import { RadioEditor } from './radio_editor';
 import { DropdownEditor } from './dropdown_editor';
 import { HtmlFormEditor } from './html_form_editor';
 import { ButtonEditor } from './buttons_editor';
+import { FetchEditor } from './fetch_editor';
 
 export const catalogueEditor: EditorComponentCatalogue = {
   isEditor: true,
@@ -32,6 +33,7 @@ export const catalogueEditor: EditorComponentCatalogue = {
     Dropdown: DropdownEditor,
     Date: DateEditor,
     Flex: FlexEditor,
+    Fetch: FetchEditor,
     Form: FormEditor,
     Formula: FormulaEditor,
     Grid: GridEditor,

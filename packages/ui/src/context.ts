@@ -1,4 +1,5 @@
 import React from 'react';
+import { EditorContext } from './context/editor';
 import { observable } from 'mobx';
 
 type User = {
@@ -7,16 +8,13 @@ type User = {
   roles?: string[];
 };
 
-export type ContextType = {
+export class ContextType {
   authToken?: string;
-  auth: { user?: User; logout?: Function };
-  providers?: any;
-};
+  @observable auth: { user?: User; logout?: Function } = {};
+  providers?: any = {};
+  editor: EditorContext;
+}
 
-export const context: ContextType = {
-  authToken: null,
-  auth: observable({ user: null }),
-  providers: {}
-};
+export const context: ContextType = new ContextType();
 
 export const Context = React.createContext(context);

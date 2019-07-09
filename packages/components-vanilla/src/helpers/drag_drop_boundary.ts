@@ -1,6 +1,6 @@
 import { action } from 'mobx';
 import { findConflict } from './grid';
-import { FormDataSet, css, getPropValue, setPropValue, EditorContextType } from '@toryjs/ui';
+import { FormDataSet, css, getPropValue, setPropValue, ContextType } from '@toryjs/ui';
 import { GridChildProps } from '../grid_view';
 import { FormComponentProps, DataSet } from '@toryjs/form';
 
@@ -36,11 +36,7 @@ function createHandle() {
   return resizeHandle;
 }
 
-export function showHandles(
-  e: React.MouseEvent,
-  props: FormComponentProps,
-  context: EditorContextType
-) {
+export function showHandles(e: React.MouseEvent, props: FormComponentProps, context: ContextType) {
   e.preventDefault();
   console.log('Handles ...');
 
@@ -86,7 +82,7 @@ function hideHandles() {
 export function dragElement(
   e: DragEvent,
   props: FormComponentProps,
-  context: EditorContextType,
+  context: ContextType,
   target: HTMLDivElement,
   element: FormDataSet<GridChildProps, GridChildProps>,
   direction: 'left' | 'right'

@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
-
-import { FormView } from './form_view';
-import { propGroup, handlerProp } from '../editor/editor_common';
-import { SingleDropCell } from '../editor/layouts_common_editor';
-import { DynamicComponent } from './dynamic_component';
 import { observer } from 'mobx-react';
+
+import { DynamicComponent } from './dynamic_component';
+import { SingleDropCell } from './editor/single_drop_cell';
+import { FormView } from './form_view';
+import { propGroup, handlerProp } from '../props';
 
 export type FormProps = {
   text: string;

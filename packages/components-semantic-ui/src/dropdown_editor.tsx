@@ -71,6 +71,14 @@ export const DropdownEditor: EditorComponent = {
       filterColumn: prop({
         documentation:
           'Enumerator column used to filter current values. For example, we can have an enumerator with columns "value, text, countryCode". As a result we can choose to use the "countryCode" to compare with filter source.'
+      }),
+      textField: prop({
+        documentation:
+          'Which field from the target object should be rendered as text. For example, if data contains <i>{ name: "Tomas", uid: "1" }</i>, we can choose to use <i>name<i> as our text field.'
+      }),
+      valueField: prop({
+        documentation:
+          'Which field from the target object should be used as value. For example, if data contains <i>{ name: "Tomas", uid: "1" }</i>, we can choose to use <i>uid<i> as our value field.'
       })
     }),
     ...propGroup('Dropdown', {

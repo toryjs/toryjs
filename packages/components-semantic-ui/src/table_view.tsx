@@ -23,7 +23,8 @@ import {
   simpleHandle,
   valueSource,
   Context,
-  DynamicComponent
+  DynamicComponent,
+  getObjectValue
 } from '@toryjs/ui';
 
 export function createDataset(items: Column[], parent: any) {
@@ -229,7 +230,7 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
                   );
                 })
               : filteredItems.map((m, j) => {
-                  const value = m.source === '__item' ? row : (row as any)[m.source];
+                  const value = m.source === '__item' ? row : getObjectValue(row, m.source);
                   return (
                     <Table.Cell key={m.title + j}>
                       {customView && hasControl(viewTemplate, j)

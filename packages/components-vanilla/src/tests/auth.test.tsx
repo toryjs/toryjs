@@ -1,5 +1,5 @@
 import { JSONSchema, FormElement } from '@toryjs/form';
-import { create } from '@toryjs/ui';
+import { create } from '@toryjs/test-support';
 
 import { prepareComponent } from './common';
 

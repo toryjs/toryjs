@@ -36,6 +36,18 @@ export const ls =
 
 const composites = ['definitions', 'properties', 'items'];
 
+export function getObjectValue(v: any, source: string): any {
+  if (source.indexOf('.') > 0) {
+    const [head, ...tail] = source.split('.');
+    const first = v[head];
+    if (!first) {
+      return `Error: Not found "${source}"`;
+    }
+    return getObjectValue(first, tail.join('.'));
+  }
+  return v[source];
+}
+
 export function schemaDatasetToJS(schema: any, faker = true): JSONSchema {
   let result = cleanSchemaDataset(toJS(schema), faker);
   if (!result) {
@@ -256,10 +268,15 @@ export function getPropValue<C>(
       return props.dataProps && props.dataProps.first;
     } else if (prop.source === 'dataPropData') {
       return props.dataProps && props.dataProps.data;
+    } else if (props.owner) {
+      // this is either a dataset or a raw value
+      if (props.owner.getValue) {
+        return props.owner.getValue
+          ? props.owner.getValue(prop.source + path)
+          : props.owner[prop.source];
+      }
+      return getObjectValue(props.owner, prop.source);
     }
-    return props.owner.getValue
-      ? props.owner.getValue(prop.source + path)
-      : props.owner[prop.source];
   }
   return defaultValue === null ? '' : defaultValue;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Editor for Tory.js",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -25,11 +25,11 @@
   "author": "Tomi Trescak <tomi.trescak@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@tomino/test-support": "^1.0.0",
     "@tomino/toolbelt": "*",
+    "@toryjs/test-support": "^1.0.0",
     "@types/classnames": "^2.2.8",
     "@types/mocha": "^5.2.7",
-    "@types/node": "12.0.102.0.10",
+    "@types/node": "12.0.12",
     "@types/prismjs": "^1.16.0",
     "@types/react": "16.8.22",
     "@types/react-alert": "^5.2.0",
@@ -51,7 +51,7 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "@tomino/toolbelt": "^1.1.7",
+    "@tomino/toolbelt": "^1.2.3",
     "@toryjs/form": "^1.0.0",
     "@toryjs/ui": "^1.0.0",
     "classnames": "^2.2.6",

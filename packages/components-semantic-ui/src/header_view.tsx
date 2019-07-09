@@ -3,10 +3,7 @@ import * as React from 'react';
 import { HeaderProps as SuiHeaderProps, Header, Icon } from 'semantic-ui-react';
 import { FormComponentProps } from '@toryjs/form';
 import { tryInterpolate, createComponents, getValues, DynamicComponent } from '@toryjs/ui';
-
-type HeaderProps = SuiHeaderProps & {
-  titleSource: string;
-};
+import { observer } from 'mobx-react';
 
 const controlProps = [
   'attached',
@@ -25,12 +22,13 @@ const controlProps = [
   'textAlign'
 ];
 
-export const HeaderView: React.FC<FormComponentProps<HeaderProps>> = props => {
+export const HeaderView: React.FC<FormComponentProps<SuiHeaderProps>> = observer(props => {
   const { formElement, owner } = props;
 
   const [content, icon] = getValues(props, 'content');
 
   let interpolatedContent = tryInterpolate(content, owner);
+  interpolatedContent = interpolatedContent || (props.catalogue.isEditor ? '[Header]' : '');
 
   if (!formElement.elements || formElement.elements.length == 0) {
     return (
@@ -51,6 +49,6 @@ export const HeaderView: React.FC<FormComponentProps<HeaderProps>> = props => {
       )}
     </DynamicComponent>
   );
-};
+});
 
 HeaderView.displayName = 'HeaderView';

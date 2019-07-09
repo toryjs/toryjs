@@ -1,7 +1,7 @@
 {
   "name": "@toryjs/express-api",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "API for express server for management of Tory projects",
   "main": "dist/index.js",
   "scripts": {

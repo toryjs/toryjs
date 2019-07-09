@@ -1,7 +1,12 @@
 // import * as renderer from 'react-test-renderer';
 
 import { JSONSchema, FormElement } from '@toryjs/form';
-import { prepareComponent } from '../../tests/common';
+import { bindCatalogues } from '@toryjs/test-support';
+import { catalogue } from '../catalogue';
+import { catalogueEditor } from '../catalogue_editor';
+import { TestComponent } from '@toryjs/editor';
+
+const { prepareComponent } = bindCatalogues(catalogue, catalogueEditor, TestComponent);
 
 const schema: JSONSchema = {
   type: 'object',

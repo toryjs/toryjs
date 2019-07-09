@@ -12,7 +12,6 @@ export { default as names } from 'classnames';
 import { getPropValue } from './helpers';
 import { ContextType } from './context';
 
-export { Theme } from './editor/themes/common';
 export { Context } from './context';
 export {
   handle,
@@ -24,43 +23,6 @@ export {
   createComponents
 } from './helpers';
 export { DynamicComponent as DynamicControl, paintProps } from './components/dynamic_component';
-
-export const select = css`
-  .react-select__control {
-    border: 0px;
-    border-radius: 0 !important;
-    min-height: 23px;
-  }
-
-  .react-select__indicators {
-    height: 23px;
-  }
-
-  .react-select__indicator {
-    padding: 2px;
-  }
-
-  .react-select__value-container {
-    height: 23px;
-
-    > div {
-      /* position: absolute; */
-      margin: 0px;
-      padding: 0px;
-    }
-  }
-
-  .react-select__single-value {
-    margin-top: 0px;
-  }
-
-  .react-select__menu {
-    border-radius: 0px;
-    margin-top: 2px;
-  }
-
-  label: select;
-`;
 
 export const fieldSet = css`
   /* name: fieldset */
@@ -141,12 +103,12 @@ export type SignatureHandlers = {
   signatureFont(): string;
 };
 
-export type FormEditorProps = {
-  formElement: DynamicForm.FormDataSet;
-  formData: DataSet;
-  handlers?: { [index: string]: any };
-  readOnly: boolean;
-};
+// export type FormEditorProps = {
+//   formElement: DynamicForm.FormDataSet;
+//   formData: DataSet;
+//   handlers?: { [index: string]: any };
+//   readOnly: boolean;
+// };
 
 export function parseFromOwner(str: string, owner: DataSet) {
   try {
@@ -169,7 +131,7 @@ export function handlerValue(prop: BoundProp) {
 //   onClick = onClickHandler;
 // }
 
-export function root(formElement: FormElement) {
+export function datasetRoot(formElement: FormElement) {
   let root = formElement;
   while (root.parent != null && (!root.pages || root.pages.length === 0)) {
     root = root.parent;
@@ -242,7 +204,9 @@ export function createComponent1(
   }
 
   if (props.catalogue.components[formElement.control] === undefined) {
-    return <div className={names(className, error)}>{formElement.control}</div>;
+    return (
+      <div className={names(className, error)}>Component does not exist: {formElement.control}</div>
+    );
   }
 
   const hide = getPropValue(props, formElement, context, 'hidden', false);

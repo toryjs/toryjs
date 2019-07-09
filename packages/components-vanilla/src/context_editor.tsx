@@ -3,13 +3,13 @@ import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 import { observer } from 'mobx-react';
 import {
-  propGroup,
-  boundProp,
   getValue,
   Context,
   DynamicControl,
   createComponents,
-  error
+  error,
+  propGroup,
+  boundProp
 } from '@toryjs/ui';
 import { ContextProps } from './context_view';
 

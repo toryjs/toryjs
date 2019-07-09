@@ -5,7 +5,7 @@ import { Menu, Segment } from 'semantic-ui-react';
 import { Option } from '@toryjs/form';
 import { DataSet, FormComponentProps, FormComponent, BoundProp, BoundType } from '@toryjs/form';
 
-import { names, valueSource, css, getValue, DynamicComponent, Context } from '@toryjs/ui';
+import { names, css, getValue, DynamicComponent, Context, getObjectValue } from '@toryjs/ui';
 
 export const verticalStyle = css`
   /* name:vertical */
@@ -53,13 +53,16 @@ const TabComponent: React.FC<FormComponentProps<TabProps> & Props> = props => {
   const textField = getValue(props, context, 'textField');
   const valueField = getValue(props, context, 'valueField');
   const bound = value && (value as BoundType).source && valueField && textField;
-  const source = valueSource(formElement);
+  // const source = valueSource(formElement);
 
   if (bound) {
     let values = getValue(props, context) || [];
 
-    menus = values.map((v: any) => ({ text: v[textField], value: v[valueField] }));
-    currentOwner = owner.getValue(`${source}.${selection}`);
+    menus = values.map((v: any) => ({
+      text: getObjectValue(v, textField),
+      value: getObjectValue(v, valueField)
+    }));
+    currentOwner = getValue(props, context)[selection]; // , `${source}.${selection}`);
 
     // add the editor
     if (bound && menus.length === 0) {

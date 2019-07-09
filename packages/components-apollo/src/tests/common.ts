@@ -1,10 +1,11 @@
-import { bindCatalogues } from '@toryjs/ui';
+import { bindCatalogues } from '@toryjs/test-support';
+import { TestComponent } from '@toryjs/editor';
 
 import { catalogue } from '../catalogue';
 import { catalogueEditor } from '../catalogue_editor';
 
-export { create } from '@toryjs/ui';
-export const { prepareComponent, testEditor, testReadonly, testStandard } = bindCatalogues(
+export const { prepareComponent, testEditor, testReadonly, testStandard, create } = bindCatalogues(
   catalogue,
-  catalogueEditor
+  catalogueEditor,
+  TestComponent
 );

@@ -6,10 +6,6 @@ import { observer } from 'mobx-react';
 import { processControls } from './layouts_common';
 import { DynamicComponent, css, Context } from '@toryjs/ui';
 
-export type Props = {
-  EmptyCell?: React.FC<FormComponentProps>;
-};
-
 export type StackProps = {
   layout: 'row' | 'column';
   gap: string;
@@ -38,7 +34,7 @@ export function itemCSS(formElement: FormElement, layout: 'column' | 'row') {
   return itemCSS ? css([itemCSS]) : '';
 }
 
-const StackComponent: React.FC<FormComponentProps<StackProps, StackChildProps> & Props> = props => {
+const StackComponent: React.FC<FormComponentProps<StackProps, StackChildProps>> = props => {
   const context = React.useContext(Context);
   const controls = processControls(props) || [];
   const itemsCss = itemCSS(props.formElement, props.formElement.props.layout);
@@ -58,9 +54,6 @@ const StackComponent: React.FC<FormComponentProps<StackProps, StackChildProps> &
           )
         )}
       </DynamicComponent>
-      {props.formElement.elements.length === 0 && props.EmptyCell && (
-        <props.EmptyCell {...props} className={itemsCss} />
-      )}
     </>
   );
 };

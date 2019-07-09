@@ -1,6 +1,7 @@
 export { css } from 'emotion';
 
 export {
+  addProviders,
   createComponent1 as createComponent,
   createComponents,
   DynamicControl,
@@ -11,7 +12,8 @@ export {
   tryInterpolate,
   isNullOrEmpty,
   names,
-  toJS
+  toJS,
+  datasetRoot
 } from './common';
 
 export {
@@ -19,6 +21,7 @@ export {
   formDatasetToJS,
   getPropValue,
   getValue,
+  safeGetValue,
   getValues,
   handle,
   merge,
@@ -29,61 +32,63 @@ export {
   setValue,
   simpleHandle,
   valueHandler,
-  valueSource
+  valueSource,
+  stripUid,
+  clone,
+  ls,
+  getObjectValue
 } from './helpers';
 
-export { FormView } from './components/form_view';
-export { FormEditor } from './components/form_editor';
+export {
+  arrayProp,
+  boundProp,
+  dataProp,
+  gapProp,
+  handlerProp,
+  prop,
+  propGroup,
+  boundSchema,
+  tableProp
+} from './props';
 
+export { FormView } from './components/form_view';
+export { ErrorBoundary } from './components/error_boundary';
 export { DynamicComponent, FormConfig } from './components/dynamic_component';
 export { Context, ContextType, context } from './context';
+export { EditorContext, Theme } from './context/editor';
 
 export { ToryForm } from './components/form';
-export { ToryEditor } from './components/editor';
-export { ToryEditableForm } from './components/editable_form';
-export { DocsForm, docsGroup } from './components/example';
-
 export { ServerStorage } from './storage/server_storage';
 export { IProject, IStorage } from './storage/common_storage';
 
-// editor
-
-export { createEditorContainer } from './components/single_editor';
-export { EditorState } from './editor/editor_state';
-export { EditorContext, EditorContextType } from './editor/editor_context';
-export { DropComponentEditor } from './editor/droppable_editor';
-export { FormDataSet, SchemaDataSet } from './editor/form_store';
-export { TemplateEditor } from './components/template_editor';
-export { DatasetEditor, Props as DatasetEditorProps } from './editor/dataset/dataset_editor';
-
-export { DropCell, DropCellProps } from './editor/form/editor_cell';
+export {
+  LeftPane,
+  FormDataSet,
+  SchemaDataSet,
+  StateDataSet,
+  ProjectDataSet
+} from './components/editor/definitions';
 
 export {
-  prepareComponent,
-  testStandard,
-  testEditor,
-  testReadonly,
-  bindCatalogues,
-  Options as TestControlOptions
-} from './tests/common';
-
-export { create } from './tests/form_query_data';
-
-export { themes } from './editor/themes';
-
-export {
-  prop,
-  propGroup,
-  tableProp,
-  gapProp,
-  handlerProp,
-  arrayProp,
-  dataProp,
-  boundProp
-} from './editor/editor_common';
+  calculateHorizontalPosition,
+  calculatePosition,
+  calculateVerticalPosition
+} from './components/editor/common';
 
 export {
   createComponent as createEditorComponent,
-  SingleDropCell,
   EditorControl
-} from './editor/layouts_common_editor';
+} from './components/editor/editor_control';
+
+export { FormEditor } from './components/form_editor';
+export { TemplateEditor } from './components/editor/template_editor';
+export { createEditorContainer } from './components/editor/single_editor';
+export {
+  DropComponentEditor,
+  processor as dragItemProcessor
+} from './components/editor/droppable_editor';
+export { DropCell, DropCellProps } from './components/editor/editor_cell';
+export { SingleDropCell } from './components/editor/single_drop_cell';
+
+export { DragDrop, Processor, clearAll as clearDragDrop } from './components/editor/drag_drop';
+export { dragDropHandler, dragEndHandler } from './components/editor/drag_drop_form_control';

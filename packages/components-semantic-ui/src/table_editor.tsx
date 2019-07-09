@@ -8,12 +8,12 @@ import {
   propGroup,
   handlerProp,
   boundProp,
-  EditorContext,
   DynamicComponent,
   TemplateEditor,
   EditorControl,
   SingleDropCell,
-  FormDataSet
+  FormDataSet,
+  Context
 } from '@toryjs/ui';
 import { Table } from 'semantic-ui-react';
 
@@ -28,14 +28,14 @@ const templates = [
 ];
 
 const Template = observer((props: FormComponentProps<TableProps> & { templateIndex: number }) => {
-  const editorState = React.useContext(EditorContext);
+  const editorState = React.useContext(Context);
   let addDataset = createDataset(props.formElement.props.items, toJS(props.owner));
   let formElement = props.formElement;
   let template = formElement.elements[props.templateIndex];
   let elements = template.elements;
   let items = props.formElement.props.items;
 
-  editorState.project.state.selectedElement;
+  editorState.editor.project.state.selectedElement;
 
   if (formElement.elements.length <= props.templateIndex) {
     (formElement as FormDataSet).insertRow('elements', props.templateIndex, {
@@ -104,13 +104,16 @@ export const TableEditor: EditorComponent = {
   valueProvider: 'value',
   defaultChildren: [
     {
-      elements: []
+      elements: [],
+      props: { editorLabel: 'View Template' }
     },
     {
-      elements: []
+      elements: [],
+      props: { editorLabel: 'Edit Template' }
     },
     {
-      elements: []
+      elements: [],
+      props: { editorLabel: 'Add Template' }
     }
   ],
   props: {
@@ -205,6 +208,7 @@ export const TableEditor: EditorComponent = {
           props: {
             value: { source: 'source' },
             text: 'Source',
+            search: true,
             options: { handler: 'datasetSource' }
           },
           control: 'Select'
@@ -213,6 +217,8 @@ export const TableEditor: EditorComponent = {
           control: 'Select',
           props: {
             text: 'Type',
+            search: true,
+            allowAdditions: false,
             value: { source: 'type' },
             options: [
               {

@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/server",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Standalone server for management of Tory projects",
   "main": "dist/index.js",
   "scripts": {

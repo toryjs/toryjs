@@ -1,17 +1,15 @@
 import { EditorComponent } from '@toryjs/form';
 import { propGroup, boundProp } from '@toryjs/ui';
-import { observer } from 'mobx-react';
 
 import { HeaderView } from './header_view';
 import { colors, sizes, align } from './enums';
 
 export const HeaderEditor: EditorComponent = {
-  Component: observer(HeaderView),
+  Component: HeaderView,
   title: 'Header',
   control: 'Header',
   icon: 'font',
   props: propGroup('Header', {
-    titleSource: boundProp({}),
     attached: boundProp({
       control: 'Select',
       props: {

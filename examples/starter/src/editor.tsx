@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProject, ToryEditor, ServerStorage } from '@toryjs/ui';
+import { ToryEditor } from '@toryjs/editor';
 import { componentCatalogue } from './config/component_catalogue';
 import { editorCatalogue } from './config/editor_catalogue';
 import { handlers } from './config/handlers';

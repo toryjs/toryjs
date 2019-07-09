@@ -19,7 +19,9 @@ import {
   valueSource,
   handlerValue,
   sourceValue,
-  Context
+  Context,
+  createComponents,
+  getValue
 } from '@toryjs/ui';
 
 const noItems = css`
@@ -72,20 +74,20 @@ class RepeaterRow extends React.PureComponent<RowProps> {
         : this.props.viewTemplate;
 
     // we only make clickable props if the view template differs from edit template
-    return this.props.catalogue.createComponent(
+    return createComponents(
       {
         catalogue: this.props.catalogue,
         className: this.props.className,
         dataProps: this.props.dataProps,
         extra: this.props.extra,
-        formElement: this.props.formElement,
+        formElement: template,
         readOnly: this.props.readOnly,
         uid: this.props.uid,
         owner: this.props.data,
         handlers: this.handlers
-      },
-      template,
-      this.context
+      }
+      // template,
+      // this.context
       // '',
       // this.props.extra
     );
@@ -150,6 +152,8 @@ export type State = {
 };
 
 class RepeaterComponent extends React.Component<FormComponentProps<RepeaterProps>, State> {
+  static contextType = Context;
+
   state = { selectedIndex: -1 };
   addDataset: DataSet;
 
@@ -162,7 +166,7 @@ class RepeaterComponent extends React.Component<FormComponentProps<RepeaterProps
     const { formElement, owner } = this.props;
     const { allowAdd } = formElement.props;
     const boundSource = valueSource(formElement);
-    const list: DataSet[] = owner.getValue(boundSource);
+    const list: DataSet[] = getValue(this.props, this.context);
 
     let viewTemplate = formElement.elements.length > 0 && formElement.elements[0];
     let editorTemplate = formElement.elements.length > 1 && formElement.elements[1];

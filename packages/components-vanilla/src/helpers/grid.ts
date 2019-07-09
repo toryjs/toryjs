@@ -1,4 +1,4 @@
-import { ContextType, getPropValue, EditorContextType, bindGetValue } from '@toryjs/ui';
+import { ContextType, getPropValue, bindGetValue } from '@toryjs/ui';
 import { FormComponentProps, FormElement } from '@toryjs/form';
 import { GridProps, GridChildProps } from '../grid_view';
 import { FormDataSet } from '@toryjs/ui';
@@ -60,7 +60,7 @@ export function generateEmptyCells(
 
 export function findConflict(
   props: FormComponentProps,
-  context: EditorContextType,
+  context: ContextType,
   cells: FormDataSet<GridChildProps>[],
   start: number,
   end: number
@@ -76,7 +76,7 @@ export function findConflict(
 
 export function adjustPosition(
   props: FormComponentProps,
-  context: EditorContextType,
+  context: ContextType,
   where: string,
   source: FormDataSet<GridChildProps>,
   target: FormDataSet<GridChildProps>,

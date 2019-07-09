@@ -1,14 +1,7 @@
 import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 
-import {
-  prop,
-  propGroup,
-  Context,
-  getValue,
-  EditorContext,
-  createEditorContainer
-} from '@toryjs/ui';
+import { prop, propGroup, Context, getValue, createEditorContainer } from '@toryjs/ui';
 import { observer } from 'mobx-react';
 import { thumbnails, variables, handlerProps } from './apollo_query.editor';
 import { ApolloMutationView, ApolloMutationProps } from './apollo_mutation_view';
@@ -20,11 +13,10 @@ import { parseVariables } from './apollo_query_view';
 const ApolloMutationEditorComponent = observer((props: FormComponentProps<ApolloMutationProps>) => {
   const controlProps = props.formElement.props;
   const context = React.useContext(Context);
-  const editorContext = React.useContext(EditorContext);
 
   const handler = getValue(props, context, 'clickHandler');
-  if (editorContext.projectHandlers.indexOf(handler) === -1) {
-    editorContext.projectHandlers.push(handler);
+  if (context.editor.projectHandlers.indexOf(handler) === -1) {
+    context.editor.projectHandlers.push(handler);
   }
 
   controlProps.mutation;

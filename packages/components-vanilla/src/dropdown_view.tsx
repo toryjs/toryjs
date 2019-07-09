@@ -99,18 +99,18 @@ export function createDropdownComponent(
       return (
         <DynamicComponent
           {...props}
-          {...processProps(
-            props,
-            { loading: loading === true ? true : undefined, error },
-            filteredOptions,
-            context
-          )}
           control={component}
           controlProps={dropdownProps}
           options={filteredOptions}
           showError={true}
           onChange={handleChange}
           value={value || ''}
+          {...processProps(
+            props,
+            { loading: loading === true ? true : undefined, error },
+            filteredOptions,
+            context
+          )}
         />
       );
     }

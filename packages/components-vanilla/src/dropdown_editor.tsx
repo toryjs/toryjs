@@ -10,9 +10,10 @@ import {
   dataProp,
   prop,
   DynamicComponent,
-  SingleDropCell,
   css
 } from '@toryjs/ui';
+
+import { SingleDropCell } from '@toryjs/ui';
 
 import { DropdownView, DropdownProps } from './dropdown_view';
 

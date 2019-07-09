@@ -1,14 +1,5 @@
-import {
-  merge,
-  vanillaCatalogue,
-  semanticCatalogue,
-  routerCatalogue,
-  alertCatalogue
-} from '@toryjs/ui';
+import { catalogue } from '@toryjs/components-vanilla';
 
-export const componentCatalogue = merge(
-  vanillaCatalogue,
-  semanticCatalogue,
-  routerCatalogue,
-  alertCatalogue
-);
+import { merge } from '@toryjs/ui';
+
+export const componentCatalogue = merge(catalogue);

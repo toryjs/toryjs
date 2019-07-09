@@ -1,6 +1,5 @@
-import { create } from '@toryjs/ui';
 import { JSONSchema, FormElement } from '@toryjs/form';
-import { prepareComponent, testStandard, testEditor } from './common';
+import { prepareComponent, testStandard, testEditor, create } from './common';
 
 const countries = [{ text: 'Australia', value: 'AU' }, { text: 'Slovakia', value: 'SK' }];
 

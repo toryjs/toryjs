@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "declaration": false,
+    "outDir": "./dist/mjs",
+    "sourceMap": false,
+    "inlineSourceMap": false
+  }
+}

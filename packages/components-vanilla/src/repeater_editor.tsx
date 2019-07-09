@@ -3,7 +3,14 @@ import * as React from 'react';
 import { FormComponentProps, EditorComponent } from '@toryjs/form';
 import { RepeaterView, RepeaterProps } from './repeater_view';
 import { observer } from 'mobx-react';
-import { prop, propGroup, boundProp, DynamicComponent, TemplateEditor } from '@toryjs/ui';
+import {
+  prop,
+  propGroup,
+  boundProp,
+  DynamicComponent,
+  TemplateEditor,
+  createEditorContainer
+} from '@toryjs/ui';
 
 const templates = [
   { text: 'Component View', value: 'component' },
@@ -24,8 +31,13 @@ const RepeaterComponent = (props: FormComponentProps<RepeaterProps>) => {
   );
 };
 
+const RepeaterEditorWrapper = observer(RepeaterComponent);
+RepeaterEditorWrapper.displayName = 'RepeaterEditor';
+
+const RepeaterEditorView = createEditorContainer(RepeaterEditorWrapper);
+
 export const RepeaterEditor: EditorComponent = {
-  Component: observer(RepeaterComponent),
+  Component: RepeaterEditorView,
   title: 'Repeater',
   control: 'Repeater',
   icon: 'code',
@@ -42,7 +54,12 @@ export const RepeaterEditor: EditorComponent = {
         options: templates
       }
     })
-  })
+  }),
+  defaultChildren: [
+    { elements: [], props: { editorLabel: 'View Template' } },
+    { elements: [], props: { editorLabel: 'Edit Template' } },
+    { elements: [], props: { editorLabel: 'Add Template' } }
+  ]
   // handlers: {
   //   onAdd: {}
   // }

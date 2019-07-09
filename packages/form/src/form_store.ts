@@ -11,9 +11,9 @@ export type IValidator = (input: string) => string;
 interface IFormStore extends Instance<typeof FormStore> {}
 
 export type DataSet<T = {}> = IFormStore &
-Readonly<T> & {
-  parent: DataSet<T>;
-};
+  Readonly<T> & {
+    parent: DataSet<T>;
+  };
 
 export type ValidationResult = {
   required: number;
@@ -178,7 +178,7 @@ export const FormStore = types
     },
     getError(item: string): string {
       const { name, owner } = processPath(item, self);
-      if (owner) {
+      if (owner && owner.errors && owner.errors.get) {
         return owner.errors.get(name);
       }
       return null;

@@ -66,6 +66,7 @@ export type FormComponent<P = any, CH = any, O = any> = {
 };
 
 export type FormComponentCatalogue = {
+  isEditor?: boolean;
   components: { [index: string]: FormComponent | React.ComponentType<any> };
   // manualCss?: boolean;
   cssClass: string;
@@ -121,6 +122,7 @@ export type EditorComponent<P = any, C = any, CH = any, O = any> = {
 };
 
 export type EditorComponentCatalogue = {
+  isEditor?: boolean;
   createComponent?(
     props: FormComponentProps,
     formElement: FormElement,

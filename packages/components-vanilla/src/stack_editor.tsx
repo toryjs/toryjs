@@ -1,10 +1,10 @@
 import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 
-import { propGroup, prop, gapProp, DropComponentEditor } from '@toryjs/ui';
+import { propGroup, prop, gapProp, DropComponentEditor, createEditorContainer } from '@toryjs/ui';
 import { StackView, StackProps } from './stack_view';
 
-export const StackEditorComponent: React.FC<FormComponentProps<StackProps>> = props => (
+const StackEditorComponent: React.FC<FormComponentProps<StackProps>> = props => (
   <DropComponentEditor
     {...props}
     Component={StackView.Component as any}
@@ -12,8 +12,13 @@ export const StackEditorComponent: React.FC<FormComponentProps<StackProps>> = pr
   />
 );
 
+StackEditorComponent.displayName = 'StackEditor';
+
+const StackEditorWrapper = createEditorContainer(StackEditorComponent);
+StackEditorWrapper.displayName = 'StackEditorWrapper';
+
 export const StackEditor: EditorComponent = {
-  Component: StackEditorComponent,
+  Component: StackEditorWrapper,
   control: 'Stack',
   icon: 'align justify',
   title: 'Stack Layout',

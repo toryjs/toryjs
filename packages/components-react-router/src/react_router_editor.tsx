@@ -15,12 +15,17 @@ import {
   RedirectProps
 } from './react_router_view';
 
-import { root, createComponents } from '../common';
-import { propGroup, prop, boundProp } from '../editor/editor_common';
-import { DynamicComponent } from '../components/dynamic_component';
-import { EditorDropCell } from '../editor/layouts_common_editor';
-import { getValue } from '../helpers';
-import { EditorContext } from '../editor/editor_context';
+import {
+  datasetRoot,
+  createComponents,
+  propGroup,
+  prop,
+  boundProp,
+  DynamicComponent,
+  getValue,
+  Context,
+  createEditorContainer
+} from '@toryjs/ui';
 
 export const thumbnails = {
   dark:
@@ -34,7 +39,10 @@ export const thumbnails = {
    ======================================================== */
 
 const DisabledRouter: React.FC<FormComponentProps<ReactRouterProps>> = props => (
-  <MemoryRouter initialEntries={[props.formElement.props.testRoute]}>
+  <MemoryRouter
+    initialEntries={[props.formElement.props.testRoute]}
+    key={props.formElement.props.testRoute}
+  >
     {createComponents(props)}
   </MemoryRouter>
 );
@@ -43,27 +51,22 @@ DisabledRouter.displayName = 'DisabledRouter';
 
 export const ReactRouterProviderEditorComponent: React.FC<
   FormComponentProps<ReactRouterProps>
-> = props => {
-  const context = React.useContext(EditorContext);
+> = observer(props => {
+  const context = React.useContext(Context);
   let route = getValue(props, context, 'testRoute');
   return (
     <DynamicComponent
       {...props}
       preserveProps={true}
       label={config.i18n`Router Provider`}
-      control={
-        !props.formElement.elements || props.formElement.elements.length == 0
-          ? EditorDropCell
-          : route
-            ? DisabledRouter
-            : ReactRouterProvider
-      }
+      control={route ? DisabledRouter : ReactRouterProvider}
+      route={props.formElement.props.testRoute}
     />
   );
-};
+});
 
 export const ReactRouterProviderEditor: EditorComponent = {
-  Component: observer(ReactRouterProviderEditorComponent),
+  Component: createEditorContainer(ReactRouterProviderEditorComponent),
   title: 'React Router Provider',
   control: 'ReactRouterProvider',
   thumbnail: thumbnails,
@@ -112,12 +115,12 @@ export const ReactRouterRouteEditor: EditorComponent = {
   props: routeProps,
   handlers: {
     optionsProjectPages: ({ owner }) => {
-      const form = root(owner);
+      const form = datasetRoot(owner);
       return form.pages
         ? form.pages.map(p => ({
-          text: p.props.label,
-          value: p.uid
-        }))
+            text: p.props.editorLabel || p.props.label || p.props.label.value,
+            value: p.uid
+          }))
         : [];
     }
   }
@@ -156,7 +159,8 @@ export const ReactRouterSwitchEditor: EditorComponent = {
           props: {
             label: 'Exact',
             width: '20px',
-            value: { source: 'exact' }
+            value: { source: 'exact' },
+            documentation: 'Exact?'
           }
         }
       ],

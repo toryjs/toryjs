@@ -20,6 +20,7 @@ import { RadioView } from './radio_view';
 import { DropdownView } from './dropdown_view';
 import { HtmlFormComponent } from './html_form_view';
 import { ButtonView } from './buttons_view';
+import { FetchView } from './fetch_view';
 
 export const catalogue: FormComponentCatalogue = {
   createComponent: createComponent,
@@ -32,6 +33,7 @@ export const catalogue: FormComponentCatalogue = {
     Date: DateView,
     Dropdown: DropdownView,
     EditorCell: null,
+    Fetch: FetchView,
     Flex: FlexView,
     Form: FormView,
     Formula: FormulaView,

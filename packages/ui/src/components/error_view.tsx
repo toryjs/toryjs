@@ -25,7 +25,7 @@ export function renderError(error: string, pointing: PointingProps, inline: bool
   );
 }
 
-const ErrorView = observer(({ owner, source, inline, pointing = true }: ErrorProps) => {
+export const ErrorView = observer(({ owner, source, inline, pointing = true }: ErrorProps) => {
   if (!owner.getError) {
     return null;
   }

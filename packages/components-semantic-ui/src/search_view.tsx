@@ -43,26 +43,22 @@ const style = css`
   .input {
     display: block !important;
   }
-  .result:first-of-type:hover,
-  .result:first-of-type {
-    background: #dedede !important;
-    font-weight: bold;
-  }
 `;
 
-export const SearchComponent: React.FC<FormComponentProps<SearchComponentProps>> = props => {
-  const ctx = React.useContext(Context); // the react component freezes when used with context
-  return <SearchWithContext {...props} context={ctx} />;
-};
+// const SearchComponent: React.FC<FormComponentProps<SearchComponentProps>> = props => {
+//   const ctx = React.useContext(Context); // the react component freezes when used with context
+//   return <SearchWithContext {...props} context={ctx} />;
+// };
 
 const controlProps = ['fluid'];
 
 @observer
 export class SearchWithContext extends React.Component<
-  FormComponentProps<SearchComponentProps> & { context: ContextType },
+  FormComponentProps<SearchComponentProps>,
   State
 > {
   static contextType = Context;
+  context: ContextType;
 
   state = { isLoading: false, options: [] as any[], value: '' };
 
@@ -91,7 +87,7 @@ export class SearchWithContext extends React.Component<
           single: props.single,
           limit: props.limit,
           value,
-          context: this.props.context,
+          context: this.context,
           searchByValue: true
         }
       ).then((options: DropdownOption[]) => {
@@ -142,7 +138,7 @@ export class SearchWithContext extends React.Component<
     if (control[0] && control[0].match(/\d/)) {
       control = control
         .split('\n')
-        .map((s, i) => `<div style="width: ${s};display: inline-block">{${i}}</div>`)
+        .map((s, i) => `<div style="width: ${s};display: inline-block" onclick="">{${i}}</div>`)
         .join('\n');
     }
 
@@ -155,9 +151,9 @@ export class SearchWithContext extends React.Component<
     if (!value) {
       return [];
     }
-    if (!this.props.formElement.props.searchName) {
-      throw new Error('You need to define a search name!');
-    }
+    // if (!this.props.formElement.props.searchName) {
+    //   throw new Error('You need to define a search name!');
+    // }
     let props = this.props.formElement.props;
     handle(
       this.props.handlers,
@@ -171,7 +167,7 @@ export class SearchWithContext extends React.Component<
         single: props.single,
         limit: props.limit,
         value,
-        context: this.props.context
+        context: this.context
       }
     ).then((options: DropdownOption[]) => {
       // handle titles, make sure they are defined
@@ -188,7 +184,7 @@ export class SearchWithContext extends React.Component<
     const { isLoading, value, options } = this.state;
 
     if (!valueSource(this.props.formElement)) {
-      return <span>Component not bound ;(</span>;
+      return <DynamicComponent {...this.props}>Component not bound ;(</DynamicComponent>;
     }
 
     if (this.props.readOnly || this.props.formElement.props.single) {
@@ -219,6 +215,6 @@ export class SearchWithContext extends React.Component<
 }
 
 export const SearchView = {
-  Component: SearchComponent,
+  Component: SearchWithContext,
   toString: () => ''
 };

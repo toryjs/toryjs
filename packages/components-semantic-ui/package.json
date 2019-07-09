@@ -25,10 +25,11 @@
   "author": "Tomi Trescak <tomi.trescak@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@toryjs/express-api": "1.0.0",
+    "@toryjs/express-api": "1.0.2",
     "fuse-box": "^3.7.1"
   },
   "dependencies": {
+    "@tomino/toolbelt": "^1.2.4",
     "@toryjs/components-vanilla": "^1.0.0",
     "@toryjs/ui": "*",
     "@types/marked": "^0.6.5",

@@ -8,11 +8,15 @@ import {
   Switch,
   RouteComponentProps
 } from 'react-router-dom';
-import { FormComponentProps, FormComponent } from '@toryjs/form';
-import { createComponents, root, tryInterpolate } from '../common';
-import { FormView } from '../components/form_view';
 import { observer } from 'mobx-react';
-import { DynamicComponent } from '../components/dynamic_component';
+import { FormComponentProps, FormComponent } from '@toryjs/form';
+import {
+  createComponents,
+  tryInterpolate,
+  FormView,
+  DynamicComponent,
+  datasetRoot
+} from '@toryjs/ui';
 
 export type ReactRouterProps = {
   disable: boolean;
@@ -70,10 +74,12 @@ const EmptyPage: React.FC<FormComponentProps<RouteProps>> = props => (
 
 export const ReactRouterRoute: React.FC<FormComponentProps<RouteProps>> = props => {
   const Component = React.useMemo(() => {
-    const page = root(props.formElement).pages.find(p => p.uid === props.formElement.props.page);
+    const page = datasetRoot(props.formElement).pages.find(
+      p => p.uid === props.formElement.props.page
+    );
 
     if (!page) {
-      return EmptyPage;
+      return () => <EmptyPage {...props} />;
     }
 
     const RouteView = (routerProps: RouteComponentProps<any>) => (
@@ -84,7 +90,9 @@ export const ReactRouterRoute: React.FC<FormComponentProps<RouteProps>> = props 
   Component.displayName = 'MemoRoute';
 
   return (
-    <Route
+    <DynamicComponent
+      {...props}
+      control={Route}
       exact={!!props.formElement.props.exact}
       path={props.formElement.props.path}
       component={Component}
