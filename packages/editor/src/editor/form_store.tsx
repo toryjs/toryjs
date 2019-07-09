@@ -564,7 +564,7 @@ export function prepareStores(context: IState) {
     // select the main form by default
 
     if (form) {
-      const currentForm = localStorage.getItem('CORPIX_SELECTED_FORM');
+      const currentForm = ls.getItem('CORPIX_SELECTED_FORM');
       if (currentForm && s.form.pages.some(p => p.uid === currentForm)) {
         s.state.setForm(s.form.pages.find(p => p.uid === currentForm));
       } else {

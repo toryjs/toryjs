@@ -140,15 +140,13 @@ export class EditorContext {
     return this.project;
   }
 
-  async loadProject(project: IProject, saveLast = true) {
-    this.project = this.manager.load(project, saveLast);
-
+  async loadProject(id: string) {
+    this.project = await this.manager.loadById(id);
     onSnapshot(this.project.schema, this.recomputeDataBounce);
   }
 
   load(project: IProject, saveLast = true) {
     this.project = this.manager.load(project, saveLast);
-
     onSnapshot(this.project.schema, this.recomputeDataBounce);
   }
 

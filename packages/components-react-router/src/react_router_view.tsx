@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {
   BrowserRouter,
+  Router,
   Route,
   Link,
   Redirect,
@@ -18,6 +19,15 @@ import {
   datasetRoot
 } from '@toryjs/ui';
 
+import { createMemoryHistory } from 'history';
+
+const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
+const history = canUseDOM ? undefined : createMemoryHistory();
+
 export type ReactRouterProps = {
   disable: boolean;
   testRoute: string;
@@ -28,7 +38,11 @@ export type ReactRouterProps = {
    ======================================================== */
 
 export const ReactRouterProvider: React.FC<FormComponentProps<ReactRouterProps>> = props => {
-  return <BrowserRouter>{createComponents(props)}</BrowserRouter>;
+  return canUseDOM ? (
+    <BrowserRouter>{createComponents(props)}</BrowserRouter>
+  ) : (
+    <Router history={history}>{createComponents(props)}</Router>
+  );
 };
 
 /* =========================================================

@@ -1,6 +1,6 @@
 import { ProjectDataSet } from './form_store';
 import { generateUid } from './editor_common';
-import { toJS } from '@toryjs/ui';
+import { toJS, ls } from '@toryjs/ui';
 import { formDatasetToJS, schemaDatasetToJS, IProject, IStorage } from '@toryjs/ui';
 
 type Builder = (project: IProject) => ProjectDataSet;
@@ -49,23 +49,23 @@ export class ProjectManager {
   }
 
   loadLastProject(): Promise<ProjectDataSet> {
-    let last = localStorage.getItem(ProjectManager.LAST);
+    let last = ls.getItem(ProjectManager.LAST);
     if (last) {
       return this.loadById(last);
     }
     return null;
   }
 
-  async loadById(id: string, saveLast = true): Promise<ProjectDataSet> {
+  async loadById(id: string, saveLast = false): Promise<ProjectDataSet> {
     let project = await this.storage.loadProject(id);
     return this.load(project, saveLast);
   }
 
-  load(project: IProject, saveLast = true) {
+  load(project: IProject, saveLast = false) {
     this.project = project;
 
     if (saveLast) {
-      localStorage.setItem(ProjectManager.LAST, project.uid);
+      ls.setItem(ProjectManager.LAST, project.uid);
     }
 
     return this.buildProject(project);
@@ -96,7 +96,7 @@ export class ProjectManager {
     this.storage.saveProject(project);
     this.project = project;
 
-    localStorage.setItem(ProjectManager.LAST, this.project.uid);
+    ls.setItem(ProjectManager.LAST, this.project.uid);
 
     return project;
   }
@@ -106,7 +106,7 @@ export class ProjectManager {
 
     if (this.project.uid === id) {
       this.project = null;
-      localStorage.removeItem(ProjectManager.LAST);
+      ls.removeItem(ProjectManager.LAST);
     }
   }
 

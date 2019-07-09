@@ -60,6 +60,7 @@ export { EditorContext, Theme } from './context/editor';
 export { ToryForm } from './components/form';
 export { ServerStorage } from './storage/server_storage';
 export { IProject, IStorage } from './storage/common_storage';
+export { LocalStorage } from './storage/local_storage';
 
 export {
   LeftPane,

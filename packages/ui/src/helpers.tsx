@@ -30,7 +30,8 @@ export const ls =
   typeof window == 'undefined'
     ? {
       getItem() {},
-      setItem() {}
+      setItem() {},
+      removeItem() {}
     }
     : window.localStorage;
 

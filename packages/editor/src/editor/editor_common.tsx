@@ -78,7 +78,7 @@ export function findSchema(
       return findSchemaByPath(element.props.value.source.substring(1).split('.'), schema);
     } else {
       const path = createPath(element, context);
-      if (omitProps.every(p => path.indexOf(p) === 0)) {
+      if (omitProps.every(p => path.indexOf(p) === -1)) {
         return findSchemaByPath(path, schema);
       }
     }
