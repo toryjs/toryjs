@@ -67,7 +67,9 @@ export interface DropCellProps {
   mouseOver?: (e: React.MouseEvent, props: FormComponentProps, context: ContextType) => void;
   mouseOut?: () => void;
   id: string;
+  position?: string;
   hover?: (e: React.DragEvent, props: DropCellProps, context?: ContextType) => void;
+  dragLeave?: (e: React.DragEvent, props: DropCellProps, context?: ContextType) => void;
   drop: (e: React.DragEvent, props: DropCellProps, context?: ContextType) => boolean;
 }
 
@@ -117,7 +119,11 @@ export const DropCell = observer((props: DropCellProps) => {
   const dragLeave = React.useCallback((e: React.DragEvent) => {
     e.preventDefault();
     ref.current.style.background = 'inherit';
-  }, []);
+
+    if (props.dragLeave) {
+      props.dragLeave(e, props, context);
+    }
+  }, [context, props]);
 
   const drop = React.useCallback(
     e => {
@@ -172,6 +178,7 @@ export const DropCell = observer((props: DropCellProps) => {
       )}
       // onClick={this.toggleActive}
       data-id={props.id}
+      data-position={props.position}
     >
       {props.children || '\xa0'}
     </div>

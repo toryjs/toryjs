@@ -1,5 +1,5 @@
 import { Handler, JSONSchema, DataSet } from '@toryjs/form';
-import { schemaDatasetToJS, ContextType, toJS } from '@toryjs/ui';
+import { schemaDatasetToJS, ContextType, toJS, datasetRoot } from '@toryjs/ui';
 import { HandlerArgs } from '@toryjs/form';
 import { Dropdown } from 'semantic-ui-react';
 
@@ -257,4 +257,14 @@ export const optionsHandlers: FormHandler = ({ context }) => {
   return [{ text: 'None', value: '' }].concat(
     context.editor.projectHandlers.filter(h => h !== '__esModule').map(h => ({ value: h, text: h }))
   );
+};
+
+export const optionsProjectPages: FormHandler = ({ owner }) => {
+  const form = datasetRoot(owner);
+  return form.pages
+    ? form.pages.map(p => ({
+        text: p.props.editorLabel || p.props.label || p.props.label.value,
+        value: p.uid
+      }))
+    : [];
 };

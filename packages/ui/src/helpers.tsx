@@ -65,6 +65,7 @@ export function createComponents(props: FormComponentProps, className: string = 
       return undefined;
     }
     return props.catalogue.isEditor &&
+      props.catalogue.components[props.formElement.control] &&
       (props.catalogue.components[props.formElement.control] as any).provider ? (
         <div>Component has no children 🤨</div>
       ) : null;

@@ -129,6 +129,7 @@ export const Grid: React.FC<FormComponentProps<GridProps, GridChildProps> & Prop
         EditorCell ? (
           <EditorCell
             {...rest}
+            id={props.formElement.uid}
             key={i}
             style={createColumnStyles(props, element, context)}
             formElement={element}

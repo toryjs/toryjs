@@ -130,7 +130,7 @@ export const OutlineFolder = observer(
 
     return (
       <div
-        draggable={true}
+        draggable={!!item.control}
         onDragStart={parentDragStart}
         onDragEnd={endDragHandler}
         data-index={index}
@@ -185,7 +185,7 @@ export const OutlineFolder = observer(
                   className="item single"
                   data-index={index}
                   key={index + child.uid}
-                  draggable={true}
+                  draggable={!!child.control}
                   onDragStart={onDragStart}
                   onDragEnd={endDragHandler}
                   {...filterStyle(filter, child)}

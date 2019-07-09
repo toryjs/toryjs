@@ -18,6 +18,8 @@ import { LayoutProps, generateEmptyCells, adjustPosition } from './helpers/grid'
 import { showHandles, timeHideHandles } from './helpers/drag_drop_boundary';
 
 function drop(_e: React.DragEvent, props: DropCellProps, context: ContextType): boolean {
+  dragLeave(_e, props);
+
   const item = context.editor.dragItem;
   context.editor.dragItem = null;
 
@@ -69,14 +71,74 @@ function drop(_e: React.DragEvent, props: DropCellProps, context: ContextType): 
   return false;
 }
 
+const hovers: {
+  [index: string]: {
+    current: any;
+    elements: HTMLDivElement[];
+  };
+} = {};
+
+function dragOver(e: React.DragEvent, props: any, context: ContextType) {
+  const config = hovers[props.id];
+  if (config.current === e.currentTarget) {
+    return;
+  }
+
+  // clear previous
+  for (let hover of config.elements) {
+    hover.style.background = 'inherit';
+  }
+  config.elements = [];
+  config.current = e.currentTarget;
+
+  // find all elements
+  const dragItem = context.editor.dragItem;
+  if (!dragItem) {
+    return;
+  }
+  const width = dragItem.element.props.width;
+  const startColumn =
+    dragItem.position === 'left'
+      ? props.formElement.props.column
+      : props.formElement.props.column - dragItem.element.props.width + 1;
+  for (let i = 0; i < width; i++) {
+    const position = `div[data-position="${props.id}-${props.formElement.props.row}-${startColumn +
+      i}"]`;
+    const element: HTMLDivElement = document.querySelector(position);
+
+    if (element) {
+      config.elements.push(element);
+      element.style.background = '#999';
+    }
+  }
+}
+
+function dragLeave(_e: any, props: any) {
+  const config = hovers[props.id];
+  for (let hover of config.elements) {
+    hover.style.background = 'inherit';
+  }
+  config.elements = [];
+}
+
 const EditorCell = (props: DropCellProps) => {
+  const config = hovers[props.id];
+
+  if (!config) {
+    hovers[props.id] = { elements: [], current: null };
+  }
+  // create hover function
+
   return (
     <DropCell
       {...props}
       drop={drop}
+      position={`${props.id}-${props.formElement.props.row}-${props.formElement.props.column}`}
       // hover={hover}
       mouseOver={showHandles}
       mouseOut={timeHideHandles}
+      hover={dragOver}
+      dragLeave={dragLeave}
     />
   );
 };

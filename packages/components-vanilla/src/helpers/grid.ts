@@ -87,19 +87,20 @@ export function adjustPosition(
     // TODO: fix
     return getValue(target, 'column');
   }
-  let dimensions = parent.elements.reduce(
-    (prev, next) => ({
-      rows: prev.rows < next.props.row ? next.props.row : prev.rows,
-      columns: prev.columns < next.props.column ? next.props.column : prev.columns
-    }),
-    { rows: 0, columns: 0 }
-  );
+  let dimensions = { rows: (parent.props as any).rows, columns: (parent.props as any).columns };
+  // parent.elements.reduce(
+  //   (prev, next) => ({
+  //     rows: prev.rows < next.props.row ? next.props.row : prev.rows,
+  //     columns: prev.columns < next.props.column ? next.props.column : prev.columns
+  //   }),
+  //   { rows: 0, columns: 0 }
+  // );
 
   // adjust from left or right
   let column =
     where === 'left'
-      ? getValue(target, 'column')
-      : getValue(target, 'column') - getValue(target, 'width') + 1;
+      ? getValue(target, 'column', 1)
+      : getValue(target, 'column', 1) - getValue(source, 'width', 1) + 1;
 
   // if (adjust) {
   //   source.props.column = position.props.column - source.props.width + 1;
@@ -109,7 +110,7 @@ export function adjustPosition(
   // adjust to max width
   column =
     column + source.props.width > dimensions.columns
-      ? dimensions.columns - getValue(source, 'width') + 1
+      ? dimensions.columns - getValue(source, 'width', 1) + 1
       : column;
 
   let cells = parent.elements.filter(e => e.props.row === target.props.row && e !== source);

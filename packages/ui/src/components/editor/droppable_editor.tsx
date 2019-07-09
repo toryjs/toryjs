@@ -21,7 +21,11 @@ type Props = {
 export const processor: Processor<FormDataSet> = {
   children: owner => owner.elements,
   name: owner => {
-    return (owner.props.label && owner.props.label.value) || owner.control;
+    return (
+      (owner.props.editorLabel && owner.props.editorLabel.value) ||
+      (owner.props.label && owner.props.label.value) ||
+      owner.control
+    );
   },
   id: owner => (owner ? owner.uid : '')
 };

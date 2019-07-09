@@ -113,8 +113,8 @@ function findVerticalPosition(e: React.DragEvent, rect: ClientRect, previousEnd:
   return rect.bottom + window.scrollY < e.pageY
     ? 'bottom'
     : previousEnd + offset > e.pageY
-    ? 'top'
-    : 'middle';
+      ? 'top'
+      : 'middle';
 }
 
 function findHorizontalPosition(e: React.DragEvent, rect: ClientRect) {
@@ -122,8 +122,8 @@ function findHorizontalPosition(e: React.DragEvent, rect: ClientRect) {
   return rect.left + window.scrollX + offset > e.pageX
     ? 'top'
     : rect.left + window.scrollX + rect.width - offset < e.pageX
-    ? 'bottom'
-    : 'middle';
+      ? 'bottom'
+      : 'middle';
 }
 
 // function getRandomColor() {
