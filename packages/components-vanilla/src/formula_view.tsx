@@ -2,21 +2,28 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { css, getValue, Context } from '@toryjs/ui';
-import { FormComponentProps, FormComponent } from '@toryjs/form';
+import { getValue, Context, DynamicComponent } from '@toryjs/ui';
+import { FormComponentProps, FormComponent, safeEval } from '@toryjs/form';
 
-const formula = css`
-  padding: 9px 0px;
-`;
-
-export const FormulaComponent: React.FC<FormComponentProps> = props => {
+const FormulaComponent: React.FC<FormComponentProps> = props => {
   const context = React.useContext(Context);
-  const value = getValue(props, context);
+  const formulaText = getValue(props, context);
+  let value;
+
+  try {
+    value = safeEval(props.owner, formulaText, props.owner);
+
+    if (value != null && typeof value == 'object') {
+      value = '[Object Results are not allowed]';
+    }
+  } catch (ex) {
+    return <DynamicComponent {...props}>{ex.message}</DynamicComponent>;
+  }
 
   return (
-    <div className="ui input">
-      <div className={formula}>{value == null ? '#Formula' : value}</div>
-    </div>
+    <DynamicComponent {...props}>
+      {value == null ? (props.catalogue.isEditor ? '#Formula' : '') : value}
+    </DynamicComponent>
   );
 };
 

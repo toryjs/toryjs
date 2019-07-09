@@ -47,7 +47,7 @@ export const TextComponent: React.FC<FormComponentProps<TextProps>> = props => {
 };
 
 export const TextView: FormComponent<TextProps> = {
-  Component: TextComponent,
+  Component: observer(TextComponent),
   toString: f => f.props.text
 };
 
@@ -133,17 +133,18 @@ export type LinkSelectorProps = {
   source: BoundProp;
 };
 
-export const LinkSelectorComponent: React.FC<FormComponentProps<LinkSelectorProps>> = props => {
+const LinkSelectorComponent: React.FC<FormComponentProps<LinkSelectorProps>> = props => {
   const { formElement, owner } = props;
-  const { text, target } = formElement.props;
+  const { target } = formElement.props;
   const context = React.useContext(Context);
+  const text = getValue(props, context, 'text');
   const onClick = React.useCallback(
     () => owner.setValue(sourceValue(target), getValue(props, context, 'source')),
     [context, owner, props, target]
   );
   return (
     <DynamicControl {...props} control="a" styleName={pointer} onClick={onClick}>
-      {tryInterpolate(text, owner)}
+      {tryInterpolate(text || (props.catalogue.isEditor ? '[Selector Text]' : ''), owner)}
     </DynamicControl>
   );
 };

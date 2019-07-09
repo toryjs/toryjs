@@ -24,7 +24,8 @@ export const TextEditor: EditorComponent = {
   icon: 'font',
   props: propGroup('Text', {
     value: boundProp({
-      props: { label: '', display: 'padded' },
+      documentation: 'Text to display',
+      props: { label: '', display: 'padded', editorLabel: 'Text' },
       control: 'Textarea'
     })
   })
@@ -108,10 +109,9 @@ export const LinkSelectorEditor: EditorComponent = {
   icon: 'anchor',
   props: {
     ...propGroup('Selector', {
-      text: prop({ control: 'Textarea' }),
+      text: boundProp({ control: 'Textarea', documentation: 'Text of the link' }),
       source: boundProp({
-        documentation:
-          'This value is stored to the target. You do not have to specify this and use "source", where the value from "source" will be stored in the "target"'
+        documentation: 'This value is stored to the target.'
       }),
       target: boundProp({
         documentation: 'Dataset path to store the value'
