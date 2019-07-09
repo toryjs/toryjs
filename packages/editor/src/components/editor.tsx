@@ -83,20 +83,22 @@ export const ToryEditor: React.FC<Props> = props => {
   if (!project) {
     if (props.storage) {
       props.storage.loadProject().then(p => {
-        editorContext.load(toJS(p));
-        if (props.storage) {
-          (props.storage as any).projects[p.uid] = editorContext.project;
-          (props.storage as any).project = editorContext.project;
-        }
-
-        editorContext.undoManager = initUndoManager(editorContext.project as any);
-        editorContext.project.state.changeLeftPane(props.defaultView || 'outline');
-
         setProject(p);
       });
     } else {
       throw new Error('You need to provide either a storage or a form model');
     }
+  }
+
+  if (project && !editorContext.project) {
+    if (props.storage) {
+      (props.storage as any).projects[project.uid] = editorContext.project;
+      (props.storage as any).project = editorContext.project;
+    }
+
+    editorContext.load(toJS(project));
+    editorContext.undoManager = initUndoManager(editorContext.project as any);
+    editorContext.project.state.changeLeftPane(props.defaultView || 'outline');
   }
 
   if (!stylesLoaded || !project || !editorContext.project) {

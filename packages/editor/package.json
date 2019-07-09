@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/editor",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Editor for Tory.js",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -59,6 +59,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^6.0.3",
     "mobx-state-tree": "^3.14.0",
+    "mst-middlewares": "^3.14.0",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
