@@ -1,3 +1,3 @@
-import * as handlers from '../handlers/todo_handlers';
+import * as handlers from '../handlers/tory_handlers';
 
 export { handlers };

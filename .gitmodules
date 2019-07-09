@@ -1,0 +1,3 @@
+[submodule "Docs"]
+	path = docs
+	url = https://github.com/tomitrescak/ToryDocs

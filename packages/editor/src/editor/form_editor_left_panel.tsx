@@ -19,7 +19,7 @@ type Props = {
   hideViews: string[];
 };
 
-export const FromEditorLeftPanel = observer(({ hideViews }: Props) => {
+export const FromEditorLeftPanel = observer(({ hideViews = [] }: Props) => {
   const context = React.useContext(Context);
 
   const isActive = React.useCallback((value: LeftPane) => hideViews.indexOf(value) === -1, [

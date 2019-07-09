@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToryEditor } from '@toryjs/editor';
+import { ToryEditor, themes } from '@toryjs/editor';
 import { componentCatalogue } from './config/component_catalogue';
 import { editorCatalogue } from './config/editor_catalogue';
 import { handlers } from './config/handlers';
@@ -11,6 +11,7 @@ const Editor: React.FC = props => (
     editorCatalogue={editorCatalogue}
     storage={storage}
     handlers={handlers}
+    theme={themes.dark}
   />
 );
 

@@ -3,6 +3,7 @@ import { prepareStores } from './form_store';
 import { ProjectManager } from './project_manager';
 import { Handlers, FormComponentCatalogue, EditorComponentCatalogue } from '@toryjs/form';
 import { Theme } from './themes/common';
+import { themes } from './themes';
 
 type Props = {
   storage: IStorage;
@@ -18,7 +19,7 @@ export function createEditorContext(options: Props, context: ContextType) {
     options.editorCatalogue,
     options.handlers,
     [],
-    options.theme
+    options.theme || themes.light
   );
 
   const builder = prepareStores(newContext);

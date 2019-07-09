@@ -56,9 +56,9 @@ export class ProjectManager {
     return null;
   }
 
-  async loadById(id: string): Promise<ProjectDataSet> {
+  async loadById(id: string, saveLast = true): Promise<ProjectDataSet> {
     let project = await this.storage.loadProject(id);
-    return this.load(project);
+    return this.load(project, saveLast);
   }
 
   load(project: IProject, saveLast = true) {

@@ -49,6 +49,7 @@ export type Theme = {
 interface IProjectManager {
   storage: IStorage;
   loadLastProject: Function;
+  loadById(id: string): Promise<ProjectDataSet>;
   load(project: IProject, saveLast: boolean): ProjectDataSet;
   saveProject(project: ProjectDataSet): void;
   duplicateProject(project: ProjectDataSet, name: string): ProjectDataSet;
@@ -137,6 +138,12 @@ export class EditorContext {
       this.project = await this.manager.loadLastProject();
     }
     return this.project;
+  }
+
+  async loadProject(project: IProject, saveLast = true) {
+    this.project = this.manager.load(project, saveLast);
+
+    onSnapshot(this.project.schema, this.recomputeDataBounce);
   }
 
   load(project: IProject, saveLast = true) {
