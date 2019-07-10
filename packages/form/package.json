@@ -1,7 +1,7 @@
 {
   "name": "@toryjs/form",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Dynamic form harnessing power of mobx-state-tree and JSON schema",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",

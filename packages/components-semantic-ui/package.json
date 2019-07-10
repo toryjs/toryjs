@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-semantic-ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -25,13 +25,13 @@
   "author": "Tomi Trescak <tomi.trescak@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@toryjs/express-api": "1.0.2",
+    "@toryjs/express-api": "^1.0.3",
     "fuse-box": "^3.7.1"
   },
   "dependencies": {
     "@tomino/toolbelt": "^1.2.4",
-    "@toryjs/components-vanilla": "^1.0.0",
-    "@toryjs/ui": "*",
+    "@toryjs/components-vanilla": "^1.0.5",
+    "@toryjs/ui": "^1.0.19",
     "@types/marked": "^0.6.5",
     "marked": "^0.6.3",
     "react": "^16.8.6",

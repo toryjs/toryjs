@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-toryjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
@@ -31,12 +31,12 @@
     "fuse-box": "^3.7.1"
   },
   "dependencies": {
-    "@toryjs/ui": "^1.0.0",
+    "@toryjs/ui": "^1.0.19",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "use-react-router": "^1.0.7",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "use-react-router": "^1.0.7"
   },
   "browserslist": [
     "last 1 Chrome version"
