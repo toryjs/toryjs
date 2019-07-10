@@ -121,7 +121,7 @@ export const ApolloMutationEditor: EditorComponent = {
       fakeData: prop({
         control: 'Code',
         props: { language: 'javascript' },
-        documentation: `Fake data to return from the mutation.`
+        documentation: `Fake data returned by the mutation.`
       })
     })
   },
