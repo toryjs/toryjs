@@ -1,9 +1,7 @@
 import { Handler, JSONSchema, DataSet } from '@toryjs/form';
-import { schemaDatasetToJS, ContextType, toJS, datasetRoot } from '@toryjs/ui';
+import { schemaDatasetToJS, ContextType, toJS, datasetRoot, FormDataSet } from '@toryjs/ui';
 import { HandlerArgs } from '@toryjs/form';
 import { Dropdown } from 'semantic-ui-react';
-
-import { FormDataSet } from '../form_store';
 
 type FormHandler = Handler<FormDataSet, ContextType>;
 // type FormParseHandler = ParseHandler<FormDataSet, ContextType>;

@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
-import { schemaDatasetToJS, ContextType } from '@toryjs/ui';
-
-import { SchemaDataSet } from '../form_store';
+import { schemaDatasetToJS, ContextType, SchemaDataSet } from '@toryjs/ui';
 
 let currentStack: HTMLDivElement[] = [];
 

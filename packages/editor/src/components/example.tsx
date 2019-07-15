@@ -2,9 +2,7 @@ import * as React from 'react';
 
 import { css } from 'emotion';
 import { FormComponentCatalogue, EditorComponentCatalogue } from '@toryjs/form';
-import { IProject, ServerStorage, ToryForm, formDatasetToJS } from '@toryjs/ui';
-
-import { LeftPane } from '../editor/form_store';
+import { IProject, ServerStorage, ToryForm, formDatasetToJS, LeftPane } from '@toryjs/ui';
 
 // const LazyEditor = React.lazy(() => import('./editor'));
 

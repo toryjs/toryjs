@@ -2,8 +2,7 @@ import React from 'react';
 import { Sidebar, Menu, Icon } from 'semantic-ui-react';
 import { css } from 'emotion';
 
-import { Context } from '@toryjs/ui';
-import { LeftPane } from './form_store';
+import { Context, LeftPane } from '@toryjs/ui';
 import { observer } from 'mobx-react';
 
 const style = css`

@@ -1,9 +1,8 @@
 import { Handler, ParseHandler, safeEval, Schema, ValidateHandler, Option } from '@toryjs/form';
 import { debounce } from '@tomino/toolbelt';
-import { schemaDatasetToJS, ContextType } from '@toryjs/ui';
+import { schemaDatasetToJS, ContextType, SchemaDataSet } from '@toryjs/ui';
 import { HandlerArgs } from '@toryjs/form';
 
-import { SchemaDataSet } from '../form_store';
 import { root } from '../editor_common';
 import { fakerOptions } from './faker_options';
 

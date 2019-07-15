@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SchemaDataSet } from '../form_store';
+import { SchemaDataSet } from '@toryjs/ui';
 import { observer } from 'mobx-react';
 import { BuildLayer } from './dataset_layer';
 import { BuildLayerFolder } from './dataset_folder';

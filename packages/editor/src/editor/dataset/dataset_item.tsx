@@ -2,12 +2,11 @@ import * as React from 'react';
 
 import { SemanticCOLORS, Icon } from 'semantic-ui-react';
 
-import { SchemaDataSet } from '../form_store';
 import { JSONSchema7Type } from '@toryjs/form';
 import { observer } from 'mobx-react';
 import { DatasetValue } from './dataset_value';
 import { dragStart, dragEnd } from './dataset_drag';
-import { Context } from '@toryjs/ui';
+import { Context, SchemaDataSet } from '@toryjs/ui';
 
 type LayerProps = {
   schema: SchemaDataSet;

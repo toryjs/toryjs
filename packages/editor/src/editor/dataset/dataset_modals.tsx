@@ -5,11 +5,11 @@ import { css } from 'emotion';
 import { action } from 'mobx';
 import { config } from '@toryjs/form';
 import { clone } from '@tomino/toolbelt';
-import { Context } from '@toryjs/ui';
+import { Context, SchemaDataSet } from '@toryjs/ui';
 
 import { SchemaRecord } from '../editor_types';
 import { modalActions } from '../editor_styles';
-import { SchemaDataSet, searchSchema, searchForm } from '../form_store';
+import { searchSchema, searchForm } from '../form_store';
 
 type Props = {
   schema: SchemaDataSet;

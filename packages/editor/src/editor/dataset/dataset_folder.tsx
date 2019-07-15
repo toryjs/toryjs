@@ -2,10 +2,8 @@ import * as React from 'react';
 
 import { Icon } from 'semantic-ui-react';
 import { observer } from 'mobx-react';
-
-import { SchemaDataSet } from '../form_store';
 import { DataSet } from '@toryjs/form';
-import { toJS, pointer, Context } from '@toryjs/ui';
+import { toJS, pointer, Context, SchemaDataSet } from '@toryjs/ui';
 import { DatasetValue } from './dataset_value';
 import { initDrag } from './dataset_drag';
 

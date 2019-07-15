@@ -2,8 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import { Context, FormEditor } from '@toryjs/ui';
-import { FormDataSet } from './form_store';
-import { addProviders } from '@toryjs/ui';
+import { addProviders, FormDataSet } from '@toryjs/ui';
 
 type Props = {
   form: FormDataSet;

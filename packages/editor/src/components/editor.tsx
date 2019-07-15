@@ -6,11 +6,10 @@ import {
   FormComponentCatalogue,
   initUndoManager
 } from '@toryjs/form';
-import { IProject, IStorage, Context, EditorContext, Theme } from '@toryjs/ui';
+import { IProject, IStorage, Context, EditorContext, Theme, LeftPane } from '@toryjs/ui';
 import { toJS } from 'mobx';
 
 import { FormEditor } from '../editor/form_editor';
-import { LeftPane } from '../editor/form_store';
 import { createEditorContext } from '../editor/context';
 
 type Props = {

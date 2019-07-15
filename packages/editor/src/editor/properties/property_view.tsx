@@ -12,12 +12,13 @@ import {
   getValue,
   Context,
   ContextType,
-  EditorContext
+  EditorContext,
+  FormDataSet,
+  SchemaDataSet
 } from '@toryjs/ui';
 import { Button, Icon, InputProps } from 'semantic-ui-react';
 import { Input } from 'semantic-ui-react';
 
-import { FormDataSet, SchemaDataSet } from '../form_store';
 import { renderElements } from '../../components/properties/control_factory_helpers';
 import { Help } from '../../components/properties/help_view';
 import { pad12, paneContent, searchableSidePane } from '../editor_styles';

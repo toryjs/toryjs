@@ -6,7 +6,7 @@ import names from 'classnames';
 
 import { FormElement } from '@toryjs/form';
 import { SplitPane } from 'react-multi-split-pane';
-import { Context, ContextType } from '@toryjs/ui';
+import { Context, ContextType, LeftPane } from '@toryjs/ui';
 
 import { PropertyEditor } from './properties/property_view';
 import { observer } from 'mobx-react';
@@ -15,7 +15,6 @@ import { SideBar } from './side_bar';
 import { FormComponentView } from './form_editor_form_view';
 import { FromEditorLeftPanel } from './form_editor_left_panel';
 import { TopMenu } from './editor_top.menu';
-import { LeftPane } from './form_store';
 
 export type View = 'pages' | 'dataset' | 'components' | 'outline' | 'all';
 

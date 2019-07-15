@@ -1,7 +1,13 @@
-import { ProjectDataSet } from './form_store';
 import { generateUid } from './editor_common';
-import { toJS, ls } from '@toryjs/ui';
-import { formDatasetToJS, schemaDatasetToJS, IProject, IStorage } from '@toryjs/ui';
+import {
+  formDatasetToJS,
+  schemaDatasetToJS,
+  IProject,
+  IStorage,
+  ProjectDataSet,
+  toJS,
+  ls
+} from '@toryjs/ui';
 
 type Builder = (project: IProject) => ProjectDataSet;
 

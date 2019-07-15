@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { names, pointer, Context, clone, getPropValue } from '@toryjs/ui';
+import { names, pointer, Context, clone, getPropValue, FormDataSet } from '@toryjs/ui';
 import { FormElement } from '@toryjs/form';
 import { Icon, Button } from 'semantic-ui-react';
 
 import { ToolBox, PaneContent } from '../editor_styles';
-import { FormDataSet } from '../form_store';
 
 type Props = {
   element: FormDataSet;

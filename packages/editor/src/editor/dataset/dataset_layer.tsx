@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-import { SchemaDataSet } from '../form_store';
 import { BuildLayerItem } from './dataset_item';
 import { IMSTMap, ISimpleType } from 'mobx-state-tree';
 import { observer } from 'mobx-react';
 import { BuildLayerFolder } from './dataset_folder';
 import { List } from 'semantic-ui-react';
 import { config, DataSet } from '@toryjs/form';
-import { Context } from '@toryjs/ui';
-import { pointer } from '@toryjs/ui';
+import { Context, SchemaDataSet, pointer } from '@toryjs/ui';
 
 export type LayerProps = {
   schema: SchemaDataSet;

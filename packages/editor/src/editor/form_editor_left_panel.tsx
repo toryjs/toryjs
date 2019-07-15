@@ -2,14 +2,13 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { SplitPane } from 'react-multi-split-pane';
 
-import { Context } from '@toryjs/ui';
+import { Context, LeftPane } from '@toryjs/ui';
 import { PagesView } from './pages/pages_view';
 import { DatasetElements } from './dataset/dataset_elements';
 import { ToolBox } from './toolbox/tool_box';
 import { DatasetTypes } from './dataset/dataset_types';
 import { OutlineView } from './outline/outline_view';
 import { List } from './editor_styles';
-import { LeftPane } from './form_store';
 
 /* =========================================================
     Component

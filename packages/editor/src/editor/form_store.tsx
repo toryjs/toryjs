@@ -16,7 +16,6 @@ import { toJS } from 'mobx';
 import { schemaDatasetToJS, ls, IProject, boundSchema, EditorContext } from '@toryjs/ui';
 
 import { FormDataSet, SchemaDataSet, LeftPane, ProjectDataSet, StateDataSet } from '@toryjs/ui';
-export { FormDataSet, SchemaDataSet, LeftPane, ProjectDataSet, StateDataSet } from '@toryjs/ui';
 
 let undoSet = false;
 

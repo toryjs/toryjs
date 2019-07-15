@@ -4,7 +4,7 @@ import {
   SchemaDataSet as SchemaDataSetModel,
   ProjectDataSet as ProjectDataSetModel,
   StateDataSet as StateDataSetModel
-} from './form_store';
+} from '@toryjs/ui';
 
 declare global {
   namespace DynamicForm {

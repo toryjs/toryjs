@@ -10,11 +10,11 @@ import {
   DragDrop,
   dragDropHandler,
   dragEndHandler,
-  dragItemProcessor
+  dragItemProcessor,
+  FormDataSet
 } from '@toryjs/ui';
 
 import { ToolIcon } from '../toolbox/tool_icon';
-import { FormDataSet } from '../form_store';
 
 export type OutlineFolderProps = {
   item: FormDataSet;
@@ -157,44 +157,46 @@ export const OutlineFolder = observer(
           className={indent ? 'itemContent' : undefined}
           {...drag.props()}
         >
-          {item.elements.map((child, index) => {
-            // if (!child) {
-            //   child = {
-            //     elements: [],
-            //     control: 'Container',
-            //     props: {}
-            //   } as any;
-            // }
-            if (child.elements && child.elements.length) {
+          {item.elements
+            .filter(e => !!e)
+            .map((child, index) => {
+              // if (!child) {
+              //   child = {
+              //     elements: [],
+              //     control: 'Container',
+              //     props: {}
+              //   } as any;
+              // }
+              if (child.elements && child.elements.length) {
+                return (
+                  <React.Fragment key={child.uid}>
+                    <OutlineFolder
+                      key={index + child.uid}
+                      filter={filter}
+                      item={child}
+                      index={index}
+                      parentDragStart={onDragStart}
+                      expanded={true}
+                    />
+                  </React.Fragment>
+                );
+              }
               return (
                 <React.Fragment key={child.uid}>
-                  <OutlineFolder
+                  <div
+                    className="item single"
+                    data-index={index}
                     key={index + child.uid}
-                    filter={filter}
-                    item={child}
-                    index={index}
-                    parentDragStart={onDragStart}
-                    expanded={true}
-                  />
+                    draggable={!!child.control}
+                    onDragStart={onDragStart}
+                    onDragEnd={endDragHandler}
+                    {...filterStyle(filter, child)}
+                  >
+                    <OutlineItem item={child} folder="single" filter={filter} />
+                  </div>
                 </React.Fragment>
               );
-            }
-            return (
-              <React.Fragment key={child.uid}>
-                <div
-                  className="item single"
-                  data-index={index}
-                  key={index + child.uid}
-                  draggable={!!child.control}
-                  onDragStart={onDragStart}
-                  onDragEnd={endDragHandler}
-                  {...filterStyle(filter, child)}
-                >
-                  <OutlineItem item={child} folder="single" filter={filter} />
-                </div>
-              </React.Fragment>
-            );
-          })}
+            })}
         </div>
       </div>
     );
