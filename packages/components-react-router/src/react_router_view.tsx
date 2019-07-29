@@ -55,7 +55,7 @@ export type RouteProps = {
   exact?: boolean;
 };
 
-type PropAssignProps = FormComponentProps & RouteComponentProps<any> & { Component: any };
+type PropAssignProps = FormComponentProps & RouteComponentProps<any> & { Component?: any };
 
 export class PageView extends React.PureComponent<PropAssignProps> {
   assignParams() {

@@ -3,10 +3,15 @@ import React from 'react';
 import { debounce } from '@tomino/toolbelt';
 import { onSnapshot } from 'mobx-state-tree';
 
-import { EditorComponent, FormComponentProps, JSONSchema, FormElement } from '@toryjs/form';
 import {
-  EditorState,
-  EditorContext,
+  EditorComponent,
+  FormComponentProps,
+  JSONSchema,
+  FormElement,
+  initUndoManager
+} from '@toryjs/form';
+import {
+  Context,
   propGroup,
   boundProp,
   prop,
@@ -18,10 +23,10 @@ import {
   setValue,
   getValue,
   simpleHandle,
-  DynamicComponent,
-  themes,
-  ToryEditor
+  DynamicComponent
 } from '@toryjs/ui';
+
+import { ToryEditor, cloneContext } from '@toryjs/editor';
 
 export type FormEditorProps = {
   showTopMenu: boolean;
@@ -36,7 +41,7 @@ export type FormEditorProps = {
 };
 
 const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
-  const context = React.useContext(EditorContext);
+  const context = React.useContext(Context);
   const controlProps = props.formElement.props;
   const ref = React.useRef(null);
 
@@ -102,31 +107,25 @@ const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
 
   // LOAD
 
-  const newContext = new EditorState(
-    context.componentCatalogue,
-    context.editorCatalogue,
-    context.handlers,
-    context.types,
-    context.manager.storage
-  );
   const schemaString = getValue(props, context, 'schemaSource');
   const formString = getValue(props, context, 'formSource');
 
   const schema = schemaString ? JSON.parse(schemaString) : { type: 'object', properties: {} };
   const form = formString ? JSON.parse(formString) : { control: 'Form', elements: [] };
 
-  newContext.theme = controlProps.theme === 'light' ? themes.white : themes.black;
-  newContext.load(
+  const newEditorContext = cloneContext(context.editor, controlProps.theme);
+  newEditorContext.load(
     {
       schema,
       form
     },
     false
   );
+  newEditorContext.undoManager = initUndoManager(newEditorContext.project as any);
 
   // listen to snapshot and save when needed
-  onSnapshot(newContext.schema as any, saveSchema);
-  onSnapshot(newContext.form as any, saveForm);
+  onSnapshot(newEditorContext.schema as any, saveSchema);
+  onSnapshot(newEditorContext.form as any, saveForm);
 
   return (
     <DynamicComponent {...props}>
@@ -142,13 +141,14 @@ const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
       >
         <ToryEditor
           {...props}
-          context={newContext}
+          context={newEditorContext}
           storage={null}
-          project={newContext.project}
-          componentCatalogue={newContext.componentCatalogue}
-          editorCatalogue={newContext.editorCatalogue}
-          handlers={newContext.handlers}
+          project={newEditorContext.project as any}
+          componentCatalogue={newEditorContext.componentCatalogue}
+          editorCatalogue={newEditorContext.editorCatalogue}
+          handlers={newEditorContext.handlers}
           showTopMenu={controlProps.showTopMenu}
+          loadStyles={false}
         />
       </div>
     </DynamicComponent>

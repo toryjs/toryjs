@@ -231,8 +231,9 @@ export const datasetSource: FormHandler = ({ owner, context }) => {
   let values: Options[] = [empty]
     .concat(paths)
     .concat(isSimpleArray ? array : [])
-    .concat(all.length && parentPath !== '' ? globalHeader.concat(all) : [])
-    .concat(props && props.dataProps ? propSource : []);
+    .concat(all.length && all.length > paths.length ? globalHeader.concat(all) : [])
+    //.concat(props && props.dataProps ? propSource : []);
+    .concat(propSource);
 
   // find the missing value if needed
   const sources: any = toJS(owner);

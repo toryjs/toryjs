@@ -46,11 +46,14 @@ export const ApolloProvider: React.FC<FormComponentProps<ApolloProps>> = props =
     let httpLink;
 
     if (batchRequests) {
-      httpLink = new BatchHttpLink({ uri: server, fetch });
+      httpLink = new BatchHttpLink({
+        uri: server,
+        fetch: typeof window === 'undefined' ? fetch : undefined
+      });
     } else {
       httpLink = createHttpLink({
         uri: server,
-        fetch
+        fetch: typeof window === 'undefined' ? fetch : undefined
       });
     }
 

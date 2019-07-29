@@ -7,6 +7,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ApolloError } from 'apollo-client';
 import { observer } from 'mobx-react';
+import { Loader } from 'semantic-ui-react';
 
 export type ApolloQueryProps = {
   query: string;
@@ -19,6 +20,7 @@ export type ApolloQueryProps = {
   onError: string;
   onSubmit: string;
   fakeData: string;
+  aggregate: boolean;
 };
 
 export function parseParameter(value: string, type: string) {
@@ -60,11 +62,13 @@ export function parseVariables(props: FormComponentProps<ParsableProps>, context
 
 export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props => {
   const [error, setError] = React.useState(null);
+  const [currentData, setData] = React.useState(null);
+
   const context = React.useContext(Context);
   const {
     owner,
     formElement: {
-      props: { query, loadingText, target, onError, onResult }
+      props: { query, loadingText, target, onError, onResult, aggregate }
     }
   } = props;
 
@@ -95,6 +99,9 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
         if (onResult) {
           simpleHandle(props, onResult, context, data);
         }
+        const result =
+          (data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]) || [];
+        setData(aggregate ? (currentData || []).concat(result) : result);
       }}
       onError={(data: ApolloError) => {
         console.log(data);
@@ -115,18 +122,23 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
         if (error) {
           return <pre>Query Error: {JSON.stringify(error, null, 2)}</pre>;
         }
-        if (loading) return loadingText || 'Loading ...';
+        if (loading && !currentData) return loadingText || 'Loading ...';
         if (error) return `Error! ${error.message}`;
 
         let dataProps = { ...props };
         if (target === 'dataPropFirst') {
           dataProps.dataProps = {
-            first: data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]
+            first: currentData
           };
         } else if (target === 'dataPropData') {
           dataProps.dataProps = { data };
         }
-        return createComponents(dataProps);
+        return (
+          <>
+            {createComponents(dataProps)}
+            {loading && currentData && <Loader inline content="Loading" active={true} />}
+          </>
+        );
       }}
     </Query>
   );

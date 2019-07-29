@@ -13,7 +13,8 @@ export {
   isNullOrEmpty,
   names,
   toJS,
-  datasetRoot
+  datasetRoot,
+  useMergeState
 } from './common';
 
 export {

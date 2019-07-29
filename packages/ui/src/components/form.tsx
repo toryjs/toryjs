@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { FormModel, FormComponentCatalogue, Handlers } from '@toryjs/form';
+import { FormModel, FormComponentCatalogue, Handlers, initUndoManager } from '@toryjs/form';
 import { IProject, IStorage } from '../storage/common_storage';
 import { FormView } from './form_view';
-import { Context, context } from '../context';
+import { Context, context, ContextType } from '../context';
 import { formDatasetToJS, schemaDatasetToJS } from '../helpers';
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
   storage?: IStorage;
   catalogue: FormComponentCatalogue;
   handlers: Handlers<any, any>;
+  context?: ContextType;
 };
 
 export const ToryForm: React.FC<Props> = props => {
@@ -27,8 +28,16 @@ export const ToryForm: React.FC<Props> = props => {
     }
     return <div>Loading ...</div>;
   }
+
+  // init undo manager
+  let formContext = props.context || context;
+  if (!formContext.editor) {
+    formContext.editor = {} as any;
+  }
+  formContext.editor.undoManager = initUndoManager(formModel.dataSet);
+
   return (
-    <Context.Provider value={context}>
+    <Context.Provider value={formContext}>
       <FormView
         formElement={formModel.formDefinition}
         owner={formModel.dataSet}

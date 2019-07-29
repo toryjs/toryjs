@@ -4,8 +4,7 @@ import React from 'react';
 import { Segment, Form, Button, Message } from 'semantic-ui-react';
 import useReactRouter from 'use-react-router';
 
-import { useMergeState, css } from '../../common';
-import { Context, ContextType } from '../../context';
+import { useMergeState, css, Context, ContextType } from '@toryjs/ui';
 
 const loginSegment = css`
   margin: 16px !important;

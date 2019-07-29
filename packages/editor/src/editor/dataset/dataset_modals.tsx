@@ -129,11 +129,14 @@ export const DeleteSchema: React.FC<Props> = ({ schema }) => {
   }
 
   let formElement = searchForm(context.editor.form, e => {
-    return Object.keys(e.props).find(
-      key =>
-        e.props[key] &&
-        e.props[key].source &&
-        e.props[key].source.indexOf(context.editor.selectedSourcePath) >= 0
+    return (
+      e &&
+      Object.keys(e.props).find(
+        key =>
+          e.props[key] &&
+          e.props[key].source &&
+          e.props[key].source.indexOf(context.editor.selectedSourcePath) >= 0
+      )
     );
   });
 

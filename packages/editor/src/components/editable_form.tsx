@@ -9,7 +9,7 @@ const editableForm = css`
   width: 100%;
 `;
 const editButton = css`
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   background-color: #008cba;

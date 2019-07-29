@@ -122,7 +122,7 @@ export function searchForm(form: FormDataSet, func: (item: FormDataSet) => any) 
   while (queue.length) {
     let current = queue.pop();
     for (let element of current.elements) {
-      if (element.elements) {
+      if (element && element.elements) {
         queue.push(element);
       }
       let result = func(element);
@@ -478,7 +478,20 @@ export function prepareStores(context: IState) {
         self.setSchema(undefined, undefined);
       },
       deleteActiveElement() {
-        self.selectedElement.parent.detach(self.selectedElement);
+        if (
+          self.selectedElement.parent &&
+          self.selectedElement.parent.parent &&
+          self.selectedElement.parent.parent.getValue('control') === 'Table'
+        ) {
+          self.selectedElement.parent.replaceRow(
+            'elements',
+            self.selectedElement.parent.getValue('elements').indexOf(self.selectedElement),
+            null
+          );
+        } else {
+          self.selectedElement.parent.detach(self.selectedElement);
+        }
+
         self.selectedElement = undefined;
       }
     }));
@@ -486,7 +499,7 @@ export function prepareStores(context: IState) {
   const projectStore = types
     .model({
       // id: types.string,
-      uid: types.string,
+      uid: types.optional(types.string, generateId),
       form: elementStore,
       schema: schemaStore,
       state: stateStore,

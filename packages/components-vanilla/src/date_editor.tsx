@@ -2,7 +2,15 @@ import React from 'react';
 import { FormComponentProps, EditorComponent } from '@toryjs/form';
 import { DateProps, DateView } from './date_view';
 import { observer } from 'mobx-react';
-import { Context, getValue, valueSource, DynamicComponent, propGroup, boundProp } from '@toryjs/ui';
+import {
+  Context,
+  getValue,
+  valueSource,
+  DynamicComponent,
+  propGroup,
+  boundProp,
+  prop
+} from '@toryjs/ui';
 
 const DateEditorComponent: React.FC<FormComponentProps<DateProps>> = observer(props => {
   const context = React.useContext(Context);
@@ -23,6 +31,11 @@ export const DateEditor: EditorComponent = {
   icon: 'calendar',
   props: propGroup('Date', {
     value: boundProp(),
+    local: prop({
+      type: 'boolean',
+      documentation:
+        'Converts the stored tate to your local timezone. If this is not set, the date is displayed the way it is stored. Please use UTC dates.'
+    }),
     format: boundProp({
       documentation: `Format the date according to the specified format.<br /><br />
       <b>List of all available formats:</b><br />

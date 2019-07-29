@@ -8,3 +8,5 @@ export { TestComponent } from './components/test_component';
 export { DatasetEditor, Props as DatasetEditorProps } from './editor/dataset/dataset_editor';
 
 export { themes } from './editor/themes';
+
+export { cloneContext } from './editor/editor_common';

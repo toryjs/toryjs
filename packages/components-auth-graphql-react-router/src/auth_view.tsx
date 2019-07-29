@@ -4,9 +4,8 @@ import React from 'react';
 import { Route, RouteComponentProps } from 'react-router';
 import { FormComponentProps } from '@toryjs/form';
 
-import { Context } from '../../context';
-import { PageView, RouteProps } from '../../react-router/react_router_view';
-import { root } from '../../common';
+import { PageView, RouteProps } from '@toryjs/components-react-router';
+import { Context, datasetRoot } from '@toryjs/ui';
 import Login from './login';
 import { observer } from 'mobx-react';
 
@@ -19,12 +18,14 @@ export type PrivateRouteProps = RouteProps & {
 };
 
 export const LoggedInView = observer(
-  (props: FormComponentProps<PrivateRouteProps> & { result: any; routerProps: any }) => {
+  (props: FormComponentProps<PrivateRouteProps> & { result?: any; routerProps: any }) => {
     const { routerProps } = props;
     const ctx = React.useContext(Context);
 
     const Component = React.useMemo(() => {
-      const page = root(props.formElement).pages.find(p => p.uid === props.formElement.props.page);
+      const page = datasetRoot(props.formElement).pages.find(
+        p => p.uid === props.formElement.props.page
+      );
       const RouteView = (routerProps: RouteComponentProps<any>) => (
         <PageView {...routerProps} {...props} formElement={page} />
       );
@@ -38,10 +39,10 @@ export const LoggedInView = observer(
       return (
         <Gql.ResumeQueryComponent variables={{ token: localStorage.getItem(ctx.authToken) }}>
           {(result: any) => {
-            if (result.loading || !result.data) {
+            if (result.loading) {
               return <div>Authorising ...</div>;
             } else {
-              if (result.error || !result.data.resume.user) {
+              if (result.error || !result.data.resume || !result.data.resume.user) {
                 return <Login />;
               } else {
                 if (!ctx.auth.user) {

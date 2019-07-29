@@ -410,8 +410,10 @@ export const FormStore = types
         }
 
         // remove error
-        for (let k of keys) {
-          self.errors.set(k, '');
+        if (self.errors) {
+          for (let k of keys) {
+            self.errors.set(k, '');
+          }
         }
 
         // get root and validate root

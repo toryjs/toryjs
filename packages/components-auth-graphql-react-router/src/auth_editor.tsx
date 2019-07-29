@@ -1,12 +1,10 @@
 import React from 'react';
 import { EditorComponent, FormComponentProps } from '@toryjs/form';
 
-import { routeProps } from '../../react-router/react_router_editor';
-import { thumbnails } from '../../apollo/apollo_query.editor';
-import { ReactRouterRoute } from '../../react-router/react_router_view';
+import { ReactRouterRoute, routeProps, thumbnails } from '@toryjs/components-react-router';
 import { observer } from 'mobx-react';
 import { PrivateRouteProps, PrivateReactRouterRoute } from './auth_view';
-import { propGroup, prop } from '../../editor/editor_common';
+import { propGroup, prop } from '@toryjs/ui';
 
 const PrivateReactRouterRouteEditorComponent: React.FC<
   FormComponentProps<PrivateRouteProps>

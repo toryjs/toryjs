@@ -1,5 +1,5 @@
 import { FormComponentCatalogue } from '@toryjs/form';
-import { DatasetEditor } from './dataset_editor';
+import { DatasetEditor } from '@toryjs/editor';
 import { FormEditorEditor } from './form_editor_editor';
 
 export const catalogue: FormComponentCatalogue = {

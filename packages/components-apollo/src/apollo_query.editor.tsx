@@ -162,6 +162,7 @@ export const ApolloQueryEditor: EditorComponent = {
         },
         type: 'string'
       }),
+      aggregate: prop({ type: 'boolean' }),
       target: dataProp({
         documentation:
           'Target dataset field, where you can (but do not have to) store the query result',

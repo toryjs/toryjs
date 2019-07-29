@@ -1,6 +1,9 @@
 // import * as jsf from 'json-schema-faker';
 import { FormElement } from '@toryjs/form';
-import { ContextType, EditorContext } from '@toryjs/ui';
+import { ContextType, EditorContext, IStorage } from '@toryjs/ui';
+import { themes } from './themes';
+import { prepareStores } from './form_store';
+import { ProjectManager } from './project_manager';
 
 export { Theme } from './themes/common';
 
@@ -100,4 +103,23 @@ export function findParentSchema(
     }
   }
   return null;
+}
+
+export function cloneContext(context: EditorContext, theme: string, storage?: IStorage) {
+  const newEditorContext = new EditorContext(
+    context.componentCatalogue,
+    context.editorCatalogue,
+    context.handlers,
+    context.types,
+    theme === 'light' ? themes.light : themes.dark
+  );
+
+  const builder = prepareStores(newEditorContext);
+  const manager = new ProjectManager(
+    storage || (context.manager && context.manager.storage),
+    builder
+  );
+
+  newEditorContext.init(manager);
+  return newEditorContext;
 }

@@ -99,8 +99,14 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
     : { formElement: props.formElement, owner: props.owner };
   const readOnly = props.readOnly;
 
+  if (!formElement) {
+    return <div>Error creating table. Table has no form element.</div>;
+  }
+
   const list: DataSet[] = controlProps.propSource
-    ? props.dataProps[controlProps.propSource]
+    ? props.dataProps
+      ? props.dataProps[controlProps.propSource]
+      : []
     : getValue(props, context) || [];
 
   const { items, allowAdd, allowDelete, allowEdit, customView } =

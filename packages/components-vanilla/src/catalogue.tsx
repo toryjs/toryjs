@@ -21,6 +21,8 @@ import { DropdownView } from './dropdown_view';
 import { HtmlFormComponent } from './html_form_view';
 import { ButtonView } from './buttons_view';
 import { FetchView } from './fetch_view';
+import { IfView } from './if_view';
+import { WindowView } from './window_view';
 
 export const catalogue: FormComponentCatalogue = {
   createComponent: createComponent,
@@ -40,6 +42,7 @@ export const catalogue: FormComponentCatalogue = {
     Grid: GridView,
     HtmlForm: HtmlFormComponent,
     Image: ImageView,
+    If: IfView,
     Input: InputView,
     Link: LinkView,
     LinkSelector: LinkSelectorView,
@@ -49,6 +52,7 @@ export const catalogue: FormComponentCatalogue = {
     Repeater: RepeaterView,
     Stack: StackView,
     Text: TextView,
-    Textarea: TextAreaView
+    Textarea: TextAreaView,
+    Window: WindowView
   }
 };

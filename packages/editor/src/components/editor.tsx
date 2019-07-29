@@ -51,9 +51,16 @@ export const ToryEditor: React.FC<Props> = props => {
   const [project, setProject] = React.useState<IProject>(props.project ? props.project : null);
   const [stylesLoaded, setStylesLoaded] = React.useState(semanticStylesLoaded || !loadStyles);
 
+  React.useEffect(() => {
+    if (project !== props.project) {
+      setProject(props.project);
+    }
+  }, [props.project]);
+
   const context = React.useContext(Context);
   const editorContext = React.useMemo(() => {
     if (props.context) {
+      context.editor = props.context;
       return props.context;
     }
     return createEditorContext(props, context);
@@ -104,9 +111,12 @@ export const ToryEditor: React.FC<Props> = props => {
     return <div>Loading ...</div>;
   }
 
+  context.editor = editorContext;
+
   return (
     <Context.Provider value={context}>
       <FormEditor
+        key={project.uid}
         context={context}
         showTopMenu={showTopMenu}
         allowSave={allowSave}

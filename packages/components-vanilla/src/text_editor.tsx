@@ -86,7 +86,7 @@ export const LinkEditor: EditorComponent = {
           { text: 'None', value: '' },
           {
             text: 'New Window',
-            value: '__empty'
+            value: '__blank'
           },
           {
             text: 'Current Page',

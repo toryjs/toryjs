@@ -2,7 +2,7 @@ import { EditorComponent } from '@toryjs/form';
 import { propGroup, prop, handlerProp, boundProp } from '@toryjs/ui';
 import { observer } from 'mobx-react';
 
-import { DatasetEditor, DatasetEditorProps } from '@toryjs/ui';
+import { DatasetEditor, DatasetEditorProps } from '@toryjs/editor';
 
 export const DatasetEditorComponent: EditorComponent<DatasetEditorProps> = {
   Component: observer(DatasetEditor),

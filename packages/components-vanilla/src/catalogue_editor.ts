@@ -20,6 +20,8 @@ import { DropdownEditor } from './dropdown_editor';
 import { HtmlFormEditor } from './html_form_editor';
 import { ButtonEditor } from './buttons_editor';
 import { FetchEditor } from './fetch_editor';
+import { IfEditor } from './if_editor';
+import { WindowEditor } from './window_editor';
 
 export const catalogueEditor: EditorComponentCatalogue = {
   isEditor: true,
@@ -38,6 +40,7 @@ export const catalogueEditor: EditorComponentCatalogue = {
     Formula: FormulaEditor,
     Grid: GridEditor,
     HtmlForm: HtmlFormEditor,
+    If: IfEditor,
     Image: ImageEditor,
     Input: InputEditor,
     Repeater: RepeaterEditor,
@@ -48,6 +51,7 @@ export const catalogueEditor: EditorComponentCatalogue = {
     Radio: RadioEditor,
     Stack: StackEditor,
     Text: TextEditor,
-    Textarea: TextAreaEditor
+    Textarea: TextAreaEditor,
+    Window: WindowEditor
   }
 };
