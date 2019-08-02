@@ -7,7 +7,8 @@ import {
   Context,
   DynamicComponent,
   handlerProp,
-  createEditorContainer
+  createEditorContainer,
+  boundProp
 } from '@toryjs/ui';
 
 import { ApolloProvider, ApolloProps } from './apollo_provider_view';
@@ -45,18 +46,18 @@ export const ApolloProviderEditor: EditorComponent = {
   group: 'Data',
   props: {
     ...propGroup('Apollo', {
-      server: prop({
+      server: boundProp({
         label: 'Server Url',
         type: 'string',
         documentation: 'Url of the GraphQL end point, e.g. https://graphql.org/swapi-graphql/'
       }),
-      tokenName: prop({
+      tokenName: boundProp({
         label: 'Token',
         type: 'string',
         documentation:
           'Specifies, under what name is the authorisation token stored in the local storage.'
       }),
-      auth: prop({
+      auth: boundProp({
         label: 'Use Authentication',
         control: 'Checkbox',
         type: 'boolean',

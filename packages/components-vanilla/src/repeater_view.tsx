@@ -21,7 +21,8 @@ import {
   sourceValue,
   Context,
   createComponents,
-  getValue
+  getValue,
+  DynamicComponent
 } from '@toryjs/ui';
 
 const noItems = css`
@@ -173,11 +174,15 @@ class RepeaterComponent extends React.Component<FormComponentProps<RepeaterProps
     let addTemplate = formElement.elements.length > 2 && formElement.elements[2];
 
     if (!boundSource) {
-      return <div>Please bind the repeater to an array source</div>;
+      return (
+        <DynamicComponent {...this.props}>
+          Please bind the repeater to an array source
+        </DynamicComponent>
+      );
     }
 
     return (
-      <>
+      <DynamicComponent {...this.props}>
         {list == null || list.length === 0 ? (
           <div className={noItems}>{`This collection contains no items ...`}</div>
         ) : (
@@ -203,7 +208,7 @@ class RepeaterComponent extends React.Component<FormComponentProps<RepeaterProps
           <AddRow addTemplate={addTemplate} addDataset={this.addDataset} props={this.props} />
         )}
         {/* <ErrorView owner={owner} source={boundSource} pointing="left" /> */}
-      </>
+      </DynamicComponent>
     );
   }
 }

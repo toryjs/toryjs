@@ -20,7 +20,7 @@ const templates = [
 ];
 const RepeaterComponent = (props: FormComponentProps<RepeaterProps>) => {
   return (
-    <DynamicComponent {...props}>
+    <DynamicComponent {...props} hideLabel={true}>
       <TemplateEditor
         {...props}
         extra={props.extra}

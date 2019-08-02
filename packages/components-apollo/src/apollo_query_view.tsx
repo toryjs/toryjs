@@ -85,6 +85,7 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
 
   let currentVariables = parseVariables(props, context);
 
+  console.log('Render');
   return (
     <Query
       query={parsedQuery}
@@ -101,7 +102,15 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
         }
         const result =
           (data && Object.keys(data).length > 0 && data[Object.getOwnPropertyNames(data)[0]]) || [];
-        setData(aggregate ? (currentData || []).concat(result) : result);
+
+        // console.log('Received data: ');
+        // console.log(data[Object.getOwnPropertyNames(data)[0]]);
+        // console.log('Current data:- ');
+        // console.log(currentData);
+
+        const dataMap = currentData || {};
+        dataMap[currentVariables.skip] = result;
+        setData(aggregate ? { ...dataMap } : result);
       }}
       onError={(data: ApolloError) => {
         console.log(data);
@@ -127,8 +136,22 @@ export const ApolloQuery: React.FC<FormComponentProps<ApolloQueryProps>> = props
 
         let dataProps = { ...props };
         if (target === 'dataPropFirst') {
+          // the result might have been cached, we need to reinitialise the state
+          if (!currentData) {
+            setData(
+              aggregate
+                ? { 0: data[Object.getOwnPropertyNames(data)[0]] }
+                : data[Object.getOwnPropertyNames(data)[0]]
+            );
+            return false;
+          }
           dataProps.dataProps = {
-            first: currentData
+            first: aggregate
+              ? Object.keys(currentData || {}).reduce(
+                  (prev, next) => prev.concat(currentData[next]),
+                  []
+                )
+              : currentData
           };
         } else if (target === 'dataPropData') {
           dataProps.dataProps = { data };

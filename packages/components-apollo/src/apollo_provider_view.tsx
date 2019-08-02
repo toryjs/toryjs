@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { FormComponentProps, FormComponent } from '@toryjs/form';
-import { createComponents, Context, simpleHandle } from '@toryjs/ui';
+import { createComponents, Context, simpleHandle, getValues } from '@toryjs/ui';
 
 import { ApolloProvider as Provider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -30,9 +30,11 @@ export const ApolloProvider: React.FC<FormComponentProps<ApolloProps>> = props =
   const context = React.useContext(Context);
   const {
     formElement: {
-      props: { auth, server, tokenName, batchRequests, disable, configureClient }
+      props: { batchRequests, disable, configureClient }
     }
   } = props;
+
+  const [server, tokenName, auth] = getValues(props, 'server', 'tokenName', 'auth');
 
   if (disable) {
     return <>{createComponents(props)}</>;

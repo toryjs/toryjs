@@ -130,7 +130,7 @@ export const formatOptions: SchemaHandler = () => [
   }
 ];
 
-export const regexValidateHandler: SchemaValidateHandler = ({ owner, args: { value, source } }) => {
+export const regexValidateHandler = (owner: any, { value, source }: any): any => {
   try {
     new RegExp(value);
   } catch (ex) {

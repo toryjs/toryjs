@@ -56,7 +56,7 @@ function drop(_e: React.DragEvent, props: DropCellProps, context: ContextType): 
     props.parentFormElement.addRow('elements', {
       label: item.label || '',
       props: {
-        ...item.controlProps,
+        ...item.props,
         control: item.name,
         row: props.formElement.props.row,
         column: props.formElement.props.column,
@@ -96,7 +96,7 @@ function dragOver(e: React.DragEvent, props: any, context: ContextType) {
   if (!dragItem) {
     return;
   }
-  const width = dragItem.element.props.width;
+  const width = dragItem.element ? dragItem.element.props.width : 1;
   const startColumn =
     dragItem.position === 'left'
       ? props.formElement.props.column

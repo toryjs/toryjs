@@ -175,7 +175,7 @@ export class EditorContext {
     try {
       this.dataSource = this.project ? buildDataSet(dataSet, data, false) : null;
     } catch (ex) {
-      alert('Data is no longer valid, needed to remove temporary data');
+      console.warn('Data is no longer valid, needed to remove temporary data');
       this.dataSource = this.project ? buildDataSet(dataSet, {}, false) : null;
     }
     this.dataVersion++;

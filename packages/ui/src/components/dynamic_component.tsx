@@ -4,7 +4,7 @@ import names from 'classnames';
 import { Context } from '../context';
 import { FormComponentProps, DataSet } from '@toryjs/form';
 import { css } from 'emotion';
-import { handle, getValue, isNullOrEmpty, valueSource } from '../helpers';
+import { handle, getValue, isNullOrEmpty, valueSource, simpleHandle } from '../helpers';
 import { ErrorBoundary } from './error_boundary';
 import { createComponents } from '../helpers';
 import { observer } from 'mobx-react';
@@ -141,8 +141,15 @@ export function paintProps<C>(
   // classnames
   const controlCss = getValue(props, context, 'css');
 
-  if (props.className || controlCss || className || (props.extra && props.extra.className)) {
+  if (
+    props.className ||
+    controlCss ||
+    className ||
+    props.formElement.props.className ||
+    (props.extra && props.extra.className)
+  ) {
     result.className = names(
+      props.formElement.props.className,
       result[className],
       className,
       props.className,
@@ -224,6 +231,15 @@ export const DynamicComponent: React.FC<WrapperProps> = observer(props => {
   React.useEffect(() => () => {
     eventCache.splice(eventCache.findIndex(c => c.props == props), 1);
   });
+
+  // on mount
+  React.useEffect(() => {
+    if (props.formElement.props.onMount) {
+      simpleHandle(props, props.formElement.props.onMount, context);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   let formElement = props.formElement;
   let currentProps = paintProps(
     props,

@@ -29,10 +29,10 @@ export function merge(...catalogues: any[]): any {
 export const ls =
   typeof window == 'undefined'
     ? {
-      getItem() {},
-      setItem() {},
-      removeItem() {}
-    }
+        getItem() {},
+        setItem() {},
+        removeItem() {}
+      }
     : window.localStorage;
 
 const composites = ['definitions', 'properties', 'items'];
@@ -68,8 +68,8 @@ export function createComponents(props: FormComponentProps, className: string = 
     return props.catalogue.isEditor &&
       props.catalogue.components[props.formElement.control] &&
       (props.catalogue.components[props.formElement.control] as any).provider ? (
-        <div>Component has no children 🤨</div>
-      ) : null;
+      <div>Component has no children 🤨</div>
+    ) : null;
   }
   return props.formElement.elements.map((e, i) => (
     <React.Fragment key={i}>
@@ -422,7 +422,11 @@ export function parseProps(props: FormComponentProps, context: ContextType) {
   const label = getValue(props, context, 'label');
 
   // we will only process the values if the schma exists
-  if (controlSource !== '' && props.owner.getSchema(controlSource, false) != null) {
+  if (
+    controlSource !== '' &&
+    props.owner.getSchema &&
+    props.owner.getSchema(controlSource, false) != null
+  ) {
     error = controlSource ? props.owner.getError(controlSource) : null;
     disabled = props.readOnly || (controlSource && props.owner.getSchema(controlSource).readOnly);
   }
@@ -449,10 +453,10 @@ export function processControl(props: FormComponentProps, createCallback: boolea
           uiProps && uiProps.checked != null
             ? uiProps.checked
             : uiProps && uiProps.value != null
-              ? uiProps.value
-              : e.currentTarget.type === 'checkbox'
-                ? e.currentTarget.checked
-                : e.currentTarget.value
+            ? uiProps.value
+            : e.currentTarget.type === 'checkbox'
+            ? e.currentTarget.checked
+            : e.currentTarget.value
         );
 
         const changeHandler = props.formElement.props.onChange;
