@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/test-support",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -25,7 +25,7 @@
   "author": "Tomi Trescak <tomi.trescak@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@toryjs/ui": "^1.0.19",
+    "@toryjs/ui": "^1.0.20",
     "@types/chai": "^4.1.7",
     "@types/classnames": "^2.2.8",
     "@types/mocha": "^5.2.7",

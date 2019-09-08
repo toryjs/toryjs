@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-vanilla",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -29,7 +29,7 @@
     "@types/datejs": "^0.0.30"
   },
   "dependencies": {
-    "@toryjs/ui": "^1.0.19",
+    "@toryjs/ui": "^1.0.20",
     "@types/marked": "^0.6.5",
     "@types/react-input-mask": "^2.0.1",
     "dayjs": "^1.8.14",

@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-auth-graphql-react-router",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
@@ -31,8 +31,8 @@
     "fuse-box": "^3.7.1"
   },
   "dependencies": {
-    "@toryjs/ui": "^1.0.19",
-    "@toryjs/components-react-router": "^1.0.0",
+    "@toryjs/components-react-router": "^1.0.3",
+    "@toryjs/ui": "^1.0.20",
     "@types/marked": "^0.6.5",
     "marked": "^0.6.3",
     "react": "^16.8.6",

@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-apollo",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Apollo Graphql components for Tory.js",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -35,7 +35,7 @@
     "react-apollo": "^2.5.8"
   },
   "dependencies": {
-    "@toryjs/ui": "^1.0.19",
+    "@toryjs/ui": "^1.0.20",
     "@types/marked": "^0.6.5",
     "fetch": "^1.1.0",
     "react": "^16.8.6",

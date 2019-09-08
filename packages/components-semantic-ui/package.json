@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-semantic-ui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@tomino/toolbelt": "^1.2.4",
-    "@toryjs/components-vanilla": "^1.0.5",
-    "@toryjs/ui": "^1.0.19",
+    "@toryjs/components-vanilla": "^1.0.6",
+    "@toryjs/ui": "^1.0.20",
     "@types/marked": "^0.6.5",
     "marked": "^0.6.3",
     "react": "^16.8.6",
