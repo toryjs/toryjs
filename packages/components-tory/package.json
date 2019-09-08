@@ -1,6 +1,6 @@
 {
   "name": "@toryjs/components-toryjs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Semantic UI form renderer based on dynamic form generation",
   "main": "dist/cjs/index.js",
