@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormViewProps, FormElement } from '@toryjs/form';
+import { FormViewProps, FormElement, FormComponentProps } from '@toryjs/form';
 import { observer } from 'mobx-react';
 import { handle, names, createComponents, datasetRoot } from '../common';
 import { Context } from '../context';
@@ -49,9 +49,27 @@ const FormViewComponent: React.FC<FormViewProps & Props> = props => {
     return <DynamicComponent {...props}>Form is empty ¯\_(ツ)_/¯</DynamicComponent>;
   }
 
+  const childProps: FormComponentProps =
+    controlProps.onCreate && props.catalogue.isEditor
+      ? {
+        ...props,
+        formElement,
+        owner,
+        catalogue: context.editor.componentCatalogue,
+        extra: null
+      }
+      : {
+        ...props,
+        formElement,
+        owner,
+        extra
+      };
+
   return (
     <DynamicComponent {...props} styleName={names(props.className, props.catalogue.cssClass, form)}>
-      {createComponents({ ...props, formElement, owner, extra })}
+      {createComponents(childProps)}
+      {formElement !== props.formElement &&
+        createComponents({ ...props, formElement: props.formElement, owner, extra })}
     </DynamicComponent>
   );
 };

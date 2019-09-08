@@ -185,6 +185,12 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
     return <div>Collection contains no items ...</div>;
   }
 
+  const catalogue = controlProps.onCreate
+    ? context.editor.componentCatalogue
+    : context.editor.editorCatalogue;
+  const { extra, ...cleanProps } = props;
+  const childProps = controlProps.onCreate ? cleanProps : props;
+
   return (
     <DynamicComponent control={Table} controlProps={tableProps} {...props}>
       <Table.Header>
@@ -222,8 +228,8 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
                   }
                   return (
                     <Table.Cell key={i}>
-                      {props.catalogue.createComponent(
-                        { ...(props as any), owner: row, dataProps: owner },
+                      {catalogue.createComponent(
+                        { ...(childProps as any), owner: row, dataProps: owner },
                         hasControl(editTemplate, i)
                           ? editTemplate.elements[i]
                           : {
@@ -240,9 +246,9 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
                   return (
                     <Table.Cell key={m.title + j}>
                       {customView && hasControl(viewTemplate, j)
-                        ? props.catalogue.createComponent(
+                        ? catalogue.createComponent(
                             {
-                              ...(props as any),
+                              ...(childProps as any),
                               owner: row,
                               dataProps: owner
                             },
@@ -277,8 +283,8 @@ const TableComponent: React.FC<FormComponentProps<TableProps>> = props => {
           <Table.Row>
             {filteredItems.map((m, i) => (
               <Table.Cell key={m.title + i}>
-                {props.catalogue.createComponent(
-                  { ...(props as any), owner: addDataset, dataProps: owner },
+                {catalogue.createComponent(
+                  { ...(childProps as any), owner: addDataset, dataProps: owner },
                   hasControl(addTemplate, i)
                     ? addTemplate.elements[i]
                     : {
