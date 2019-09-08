@@ -1,11 +1,24 @@
-import { EditorComponent } from '@toryjs/form';
-import { propGroup, prop, handlerProp, boundProp } from '@toryjs/ui';
-import { observer } from 'mobx-react';
+import React from 'react';
 
-import { DatasetEditor, DatasetEditorProps } from '@toryjs/editor';
+import { EditorComponent, FormComponentProps } from '@toryjs/form';
+import { propGroup, prop, handlerProp, boundProp, css, DynamicComponent } from '@toryjs/ui';
+import { DatasetEditorProps } from '@toryjs/editor';
+
+const editor = css`
+  padding: 12px;
+  border: solid 1px #efefef;
+  border-radius: 6px;
+  background: #dedede;
+`;
+
+const DataSetEditor: React.FC<FormComponentProps> = props => (
+  <DynamicComponent {...props} className={editor}>
+    Dataset Editor
+  </DynamicComponent>
+);
 
 export const DatasetEditorComponent: EditorComponent<DatasetEditorProps> = {
-  Component: observer(DatasetEditor),
+  Component: DataSetEditor,
   title: 'Dataset Editor',
   control: 'DatasetEditor',
   icon: 'edit',

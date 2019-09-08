@@ -30,6 +30,12 @@ const FormViewComponent: React.FC<FormViewProps & Props> = props => {
     ? handle(props.handlers, controlProps.onCreate, props.owner, props, props.formElement, context)
     : props;
 
+  // debugger;
+  // // set parent
+  // if (formElement != props.formElement && formElement.elements.length) {
+  //   formElement.elements[0].parent.parent = props.formElement;
+  // }
+
   const pageId = props.formElement.props && props.formElement.props.pageId;
   if (pageId) {
     const root = datasetRoot(props.formElement);
@@ -39,7 +45,7 @@ const FormViewComponent: React.FC<FormViewProps & Props> = props => {
     }
   }
 
-  if (!formElement.elements) {
+  if (!formElement || !formElement.elements) {
     return <DynamicComponent {...props}>Form is empty ¯\_(ツ)_/¯</DynamicComponent>;
   }
 

@@ -14,7 +14,7 @@ export function createCheckboxComponent(
   extraControls?: (props: FormComponentProps) => JSX.Element
 ) {
   const Checkbox: React.FC<FormComponentProps> = props => {
-    const { source, disabled, controlProps, value, handleChange, error } = processControl(props);
+    const { source, readOnly, controlProps, value, handleChange, error } = processControl(props);
     console.log(error);
     return (
       <DynamicComponent
@@ -25,10 +25,9 @@ export function createCheckboxComponent(
         name={source}
         label={controlProps.text}
         labelPosition={controlProps.labelPosition}
-        readOnly={disabled}
+        disabled={readOnly}
         checked={!!value}
         onChange={handleChange}
-        disabled={disabled}
         showError={true}
         extraControls={extraControls && extraControls(props)}
       />

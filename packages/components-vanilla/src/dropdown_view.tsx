@@ -5,6 +5,7 @@ import { FormComponentProps, Option } from '@toryjs/form';
 import { observer } from 'mobx-react';
 import { processControl, getValues, simpleHandle, DynamicComponent, ContextType } from '@toryjs/ui';
 import { ReactComponent } from './common';
+import { ControlTextView } from './control_text_view';
 
 type Props = {
   filterSource: string;
@@ -37,7 +38,9 @@ export function createDropdownComponent(
   renderElementOptions?: (props: FormComponentProps, context: ContextType) => JSX.Element[]
 ) {
   const DropdownView = observer((props: FormComponentProps<DropdownProps>) => {
-    const { handleChange, error, formElement, owner, context, value } = processControl(props);
+    let { handleChange, error, formElement, owner, context, value, readOnly } = processControl(
+      props
+    );
 
     const [
       filterSource,
@@ -95,16 +98,18 @@ export function createDropdownComponent(
       }));
     }
 
+    const currentOption = filteredOptions.find(o => o.value === value);
+
     if (!formElement.elements || formElement.elements.length === 0) {
       return (
         <DynamicComponent
           {...props}
-          control={component}
+          control={readOnly ? ControlTextView : component}
           controlProps={dropdownProps}
           options={filteredOptions}
           showError={true}
           onChange={handleChange}
-          value={value || ''}
+          value={readOnly && currentOption ? currentOption.text : value || ''}
           {...processProps(
             props,
             { loading: loading === true ? true : undefined, error },

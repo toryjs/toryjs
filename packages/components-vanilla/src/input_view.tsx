@@ -5,6 +5,7 @@ import { FormComponentProps, FormComponent } from '@toryjs/form';
 
 import { processControl, getValue, DynamicComponent } from '@toryjs/ui';
 import { ReactComponent } from './common';
+import { ControlTextView } from './control_text_view';
 
 type InputProps = {
   placeholder: string;
@@ -17,7 +18,7 @@ export function createInputComponent(
   inputProps = ['placeholder', 'value']
 ) {
   const BaseInputComponent: React.FC<FormComponentProps<InputProps>> = props => {
-    const { source, disabled, error, handleChange, owner, value, context } = processControl(props);
+    const { source, error, readOnly, handleChange, owner, value, context } = processControl(props);
     const schema = owner.getSchema(source);
 
     const inputLabel = getValue(props, context, 'inputLabel');
@@ -25,10 +26,9 @@ export function createInputComponent(
     return (
       <DynamicComponent
         {...props}
-        control={component}
+        control={readOnly ? ControlTextView : component}
         controlProps={inputProps}
         name={source}
-        disabled={disabled}
         error={error}
         type={schema.type === 'integer' || schema.type === 'number' ? 'number' : 'text'}
         label={inputLabel || undefined}

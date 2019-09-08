@@ -29,10 +29,10 @@ export function merge(...catalogues: any[]): any {
 export const ls =
   typeof window == 'undefined'
     ? {
-        getItem() {},
-        setItem() {},
-        removeItem() {}
-      }
+      getItem() {},
+      setItem() {},
+      removeItem() {}
+    }
     : window.localStorage;
 
 const composites = ['definitions', 'properties', 'items'];
@@ -68,8 +68,8 @@ export function createComponents(props: FormComponentProps, className: string = 
     return props.catalogue.isEditor &&
       props.catalogue.components[props.formElement.control] &&
       (props.catalogue.components[props.formElement.control] as any).provider ? (
-      <div>Component has no children 🤨</div>
-    ) : null;
+        <div>Component has no children 🤨</div>
+      ) : null;
   }
   return props.formElement.elements.map((e, i) => (
     <React.Fragment key={i}>
@@ -411,13 +411,27 @@ export function clone(dataset: DataSet) {
   return stripUid(formDatasetToJS(dataset));
 }
 
+export function isReadOnly(
+  element: FormElement,
+  props: FormComponentProps,
+  context: ContextType
+): boolean {
+  if (getPropValue(props, element, context, 'readOnly')) {
+    return true;
+  }
+  if (element.parent == null) {
+    return false;
+  }
+  return isReadOnly(element.parent, props, context);
+}
+
 export function parseProps(props: FormComponentProps, context: ContextType) {
   const value = getValue(props, context, undefined, undefined) || '';
 
   const controlSource = valueSource(props.formElement);
 
   let error = '';
-  let disabled = false;
+  let readOnly = false;
 
   const label = getValue(props, context, 'label');
 
@@ -428,10 +442,14 @@ export function parseProps(props: FormComponentProps, context: ContextType) {
     props.owner.getSchema(controlSource, false) != null
   ) {
     error = controlSource ? props.owner.getError(controlSource) : null;
-    disabled = props.readOnly || (controlSource && props.owner.getSchema(controlSource).readOnly);
+    // it is readonly when it is set to self.readonly, or any of the parents is readonly or schema is set to readonly
+    readOnly =
+      props.readOnly ||
+      isReadOnly(props.formElement, props, context) ||
+      (controlSource && props.owner.getSchema(controlSource).readOnly);
   }
 
-  return { value, label, error, disabled };
+  return { value, label, error, readOnly };
 }
 
 export function processControl(props: FormComponentProps, createCallback: boolean = true) {
@@ -453,10 +471,10 @@ export function processControl(props: FormComponentProps, createCallback: boolea
           uiProps && uiProps.checked != null
             ? uiProps.checked
             : uiProps && uiProps.value != null
-            ? uiProps.value
-            : e.currentTarget.type === 'checkbox'
-            ? e.currentTarget.checked
-            : e.currentTarget.value
+              ? uiProps.value
+              : e.currentTarget.type === 'checkbox'
+                ? e.currentTarget.checked
+                : e.currentTarget.value
         );
 
         const changeHandler = props.formElement.props.onChange;
@@ -468,7 +486,7 @@ export function processControl(props: FormComponentProps, createCallback: boolea
     );
   }
 
-  const { error, value, disabled } = parseProps(props, context);
+  const { error, value, readOnly } = parseProps(props, context);
   const source = valueSource(formElement);
 
   return {
@@ -477,7 +495,7 @@ export function processControl(props: FormComponentProps, createCallback: boolea
     formElement,
     error,
     value,
-    disabled,
+    readOnly,
     source,
     handleChange,
     controlProps: formElement.props

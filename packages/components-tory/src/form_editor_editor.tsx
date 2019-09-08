@@ -15,6 +15,7 @@ import {
   propGroup,
   boundProp,
   prop,
+  css,
   handlerProp,
   handle,
   sourceValue,
@@ -40,7 +41,7 @@ export type FormEditorProps = {
   maximiseHandler: string;
 };
 
-const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
+export const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
   const context = React.useContext(Context);
   const controlProps = props.formElement.props;
   const ref = React.useRef(null);
@@ -155,8 +156,21 @@ const FormEditorComponent = (props: FormComponentProps<FormEditorProps>) => {
   );
 };
 
+const editor = css`
+  padding: 12px;
+  border: solid 1px #efefef;
+  border-radius: 6px;
+  background: #dedede;
+`;
+
+const FormEditor: React.FC<FormComponentProps> = props => (
+  <DynamicComponent {...props} className={editor}>
+    Form Editor
+  </DynamicComponent>
+);
+
 export const FormEditorEditor: EditorComponent<FormEditorProps> = {
-  Component: FormEditorComponent,
+  Component: FormEditor,
   title: 'Form Editor',
   control: 'FormEditor',
   icon: 'wpforms',

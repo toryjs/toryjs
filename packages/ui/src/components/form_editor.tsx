@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import { DynamicComponent } from './dynamic_component';
 import { SingleDropCell } from './editor/single_drop_cell';
 import { FormView } from './form_view';
-import { propGroup, handlerProp, prop } from '../props';
+import { propGroup, handlerProp, prop, boundProp } from '../props';
 
 export type FormProps = {
   text: string;
@@ -29,6 +29,7 @@ export const FormEditor: EditorComponent = {
   icon: 'file outline',
   valueProvider: 'value',
   props: propGroup('Form Editor', {
+    readOnly: boundProp({ type: 'boolean' }),
     onCreate: handlerProp(),
     pageId: prop({
       control: 'Select',

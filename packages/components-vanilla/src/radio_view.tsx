@@ -16,7 +16,7 @@ export function createRadioComponent(
   radioControls?: (item: Option) => JSX.Element
 ) {
   const RadioComponent: React.FC<FormComponentProps> = props => {
-    const { source, disabled, error, owner, value, context } = processControl(props, false);
+    const { source, readOnly, error, owner, value, context } = processControl(props, false);
     const [options, schemaSource, vertical] = getValues(
       props,
       'options',
@@ -44,7 +44,7 @@ export function createRadioComponent(
             {React.createElement(component, {
               name: source,
               label: item.text,
-              disabled,
+              disabled: readOnly,
               value: item.value,
               'data-value': item.value,
               checked: value === item.value,

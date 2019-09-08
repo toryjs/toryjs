@@ -5,21 +5,22 @@ import { FormComponentProps, FormComponent } from '@toryjs/form';
 
 import { DynamicComponent, processControl, getValue } from '@toryjs/ui';
 import { ReactComponent } from './common';
+import { ControlTextView } from './control_text_view';
 
 const controlProps = ['placeholder'];
 
 export function createTextAreaComponent(component: ReactComponent) {
   const BaseTextAreaComponent: React.FC<FormComponentProps> = observer(props => {
-    const { source, disabled, error, value, handleChange } = processControl(props);
+    const { source, readOnly, error, value, handleChange } = processControl(props);
 
     return (
       <React.Fragment>
         <DynamicComponent
           {...props}
-          control={component}
+          control={readOnly ? ControlTextView : component}
           controlProps={controlProps}
           name={source}
-          disabled={disabled || !source}
+          disabled={readOnly || !source}
           error={error}
           value={value || ''}
           onChange={handleChange}

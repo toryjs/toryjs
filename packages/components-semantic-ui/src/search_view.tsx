@@ -14,6 +14,7 @@ import {
   valueSource,
   DynamicComponent
 } from '@toryjs/ui';
+import { parseProps } from '@toryjs/ui/dist/cjs/helpers';
 
 type DropdownOption = {
   title: string;
@@ -182,12 +183,13 @@ export class SearchWithContext extends React.Component<
 
   render() {
     const { isLoading, value, options } = this.state;
+    const { readOnly } = parseProps(this.props, this.context);
 
     if (!valueSource(this.props.formElement)) {
       return <DynamicComponent {...this.props}>Component not bound ;(</DynamicComponent>;
     }
 
-    if (this.props.readOnly || this.props.formElement.props.single) {
+    if (readOnly || this.props.formElement.props.single) {
       // return <Input disabled value={value} />;
       return value;
     }

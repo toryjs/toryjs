@@ -7,6 +7,7 @@ import utcPlugin from 'dayjs/plugin/utc';
 
 import { processControl, getValue, DynamicComponent } from '@toryjs/ui';
 import { observer } from 'mobx-react';
+import { ControlTextView } from './control_text_view';
 
 dayjs.extend(utcPlugin);
 
@@ -20,7 +21,7 @@ export type MaskedProps = {
 };
 
 export const MaskedView: React.FC<FormComponentProps<MaskedProps>> = observer(props => {
-  let { source, disabled, handleChange, value, context } = processControl(props);
+  let { source, handleChange, value, context, readOnly } = processControl(props);
 
   const format = getValue(props, context, 'dateFormat');
   const local = getValue(props, context, 'local');
@@ -32,10 +33,9 @@ export const MaskedView: React.FC<FormComponentProps<MaskedProps>> = observer(pr
   return (
     <DynamicComponent
       {...props}
-      control={InputMask}
+      control={readOnly ? ControlTextView : InputMask}
       controlProps={inputProps}
       name={source}
-      disabled={disabled}
       onChange={handleChange}
       showError={true}
       value={value || ''}
